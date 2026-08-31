@@ -1,0 +1,590 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      User-Agent:
+      - python-requests/2.32.3
+      authorization:
+      - REDACTED
+    method: POST
+    uri: https://sandboxdnac.cisco.com/dna/system/api/v1/auth/token
+  response:
+    body:
+      string: "{\n \"Token\": \"REDACTED\",\n \"message\": \"\"\n}"
+    headers:
+      Access-Control-Allow-Methods:
+      - HEAD,GET,PUT,POST,DELETE,PATCH
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '900'
+      Content-Security-Policy:
+      - 'default-src ''self'' http: https: data: blob: ''unsafe-inline'' ''unsafe-eval'';
+        base-uri ''self''; frame-ancestors ''self''; block-all-mixed-content'
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 31 Aug 2026 10:43:21 GMT
+      Server:
+      - webserver
+      Via:
+      - api-gateway,upstream
+      X-Content-Type-Options:
+      - nosniff
+      X-Correlation-Id:
+      - c2292375-fd37-4841-88a5-3933c58f2f03
+      X-Frame-Options:
+      - Deny
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-type:
+      - application/json;charset=utf-8
+      User-Agent:
+      - python-cisco-dnacsdk/2.3.7.6
+      x-auth-token:
+      - REDACTED
+    method: GET
+    uri: https://sandboxdnac.cisco.com/dna/intent/api/v1/site
+  response:
+    body:
+      string: "{\n  \"response\" : [ {\n    \"additionalInfo\" : [ ],\n    \"name\"
+        : \"Global\",\n    \"instanceTenantId\" : \"67b935c59155f50013515d1c\",\n
+        \   \"id\" : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c\",\n    \"siteHierarchy\"
+        : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c\",\n    \"siteNameHierarchy\" : \"Global\"\n
+        \ }, {\n    \"parentId\" : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c\",\n    \"additionalInfo\"
+        : [ {\n      \"nameSpace\" : \"Location\",\n      \"attributes\" : {\n        \"addressInheritedFrom\"
+        : \"8fa764ec-2070-4eb5-a0cc-fbdf37c48f8c\",\n        \"type\" : \"area\"\n
+        \     }\n    } ],\n    \"name\" : \"potheri\",\n    \"instanceTenantId\" :
+        \"67b935c59155f50013515d1c\",\n    \"id\" : \"8fa764ec-2070-4eb5-a0cc-fbdf37c48f8c\",\n
+        \   \"siteHierarchy\" : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c/8fa764ec-2070-4eb5-a0cc-fbdf37c48f8c\",\n
+        \   \"siteNameHierarchy\" : \"Global/potheri\"\n  }, {\n    \"parentId\" :
+        \"fe0a9e81-771a-4575-885c-42dfb6a8e206\",\n    \"additionalInfo\" : [ {\n
+        \     \"nameSpace\" : \"Location\",\n      \"attributes\" : {\n        \"country\"
+        : \"Hungary\",\n        \"address\" : \"Budapest, Balk\xE1n Utca, 1107, Hungary\",\n
+        \       \"latitude\" : \"47.472348185034576\",\n        \"addressInheritedFrom\"
+        : \"ac7b980f-4352-4e27-b9b5-8ef86ad7210e\",\n        \"type\" : \"building\",\n
+        \       \"longitude\" : \"19.10921594987471\"\n      }\n    } ],\n    \"name\"
+        : \"HU_B01\",\n    \"instanceTenantId\" : \"67b935c59155f50013515d1c\",\n
+        \   \"id\" : \"ac7b980f-4352-4e27-b9b5-8ef86ad7210e\",\n    \"siteHierarchy\"
+        : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c/6413f3d5-e4ab-4430-9423-ecc8a2bfcb84/fe0a9e81-771a-4575-885c-42dfb6a8e206/ac7b980f-4352-4e27-b9b5-8ef86ad7210e\",\n
+        \   \"siteNameHierarchy\" : \"Global/EU/Hungary/HU_B01\"\n  }, {\n    \"parentId\"
+        : \"6413f3d5-e4ab-4430-9423-ecc8a2bfcb84\",\n    \"additionalInfo\" : [ {\n
+        \     \"nameSpace\" : \"Location\",\n      \"attributes\" : {\n        \"addressInheritedFrom\"
+        : \"6413f3d5-e4ab-4430-9423-ecc8a2bfcb84\",\n        \"type\" : \"area\"\n
+        \     }\n    } ],\n    \"name\" : \"HU\",\n    \"instanceTenantId\" : \"67b935c59155f50013515d1c\",\n
+        \   \"id\" : \"52c74c6a-7e6b-414a-b43d-ae0316df4433\",\n    \"siteHierarchy\"
+        : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c/6413f3d5-e4ab-4430-9423-ecc8a2bfcb84/52c74c6a-7e6b-414a-b43d-ae0316df4433\",\n
+        \   \"siteNameHierarchy\" : \"Global/EU/HU\"\n  }, {\n    \"parentId\" : \"6413f3d5-e4ab-4430-9423-ecc8a2bfcb84\",\n
+        \   \"additionalInfo\" : [ {\n      \"nameSpace\" : \"Location\",\n      \"attributes\"
+        : {\n        \"addressInheritedFrom\" : \"6413f3d5-e4ab-4430-9423-ecc8a2bfcb84\",\n
+        \       \"type\" : \"area\"\n      }\n    } ],\n    \"name\" : \"NL\",\n    \"instanceTenantId\"
+        : \"67b935c59155f50013515d1c\",\n    \"id\" : \"08004f6c-380c-4453-bc6d-43fbbb87eb97\",\n
+        \   \"siteHierarchy\" : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c/6413f3d5-e4ab-4430-9423-ecc8a2bfcb84/08004f6c-380c-4453-bc6d-43fbbb87eb97\",\n
+        \   \"siteNameHierarchy\" : \"Global/EU/NL\"\n  }, {\n    \"parentId\" : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c\",\n
+        \   \"additionalInfo\" : [ {\n      \"nameSpace\" : \"Location\",\n      \"attributes\"
+        : {\n        \"addressInheritedFrom\" : \"59d22afa-32c5-426d-b20c-cf880e39d88a\",\n
+        \       \"type\" : \"area\"\n      }\n    } ],\n    \"name\" : \"chennai\",\n
+        \   \"instanceTenantId\" : \"67b935c59155f50013515d1c\",\n    \"id\" : \"59d22afa-32c5-426d-b20c-cf880e39d88a\",\n
+        \   \"siteHierarchy\" : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c/59d22afa-32c5-426d-b20c-cf880e39d88a\",\n
+        \   \"siteNameHierarchy\" : \"Global/chennai\"\n  }, {\n    \"parentId\" :
+        \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c\",\n    \"additionalInfo\" : [ {\n
+        \     \"nameSpace\" : \"Location\",\n      \"attributes\" : {\n        \"addressInheritedFrom\"
+        : \"6413f3d5-e4ab-4430-9423-ecc8a2bfcb84\",\n        \"type\" : \"area\"\n
+        \     }\n    } ],\n    \"name\" : \"EU\",\n    \"instanceTenantId\" : \"67b935c59155f50013515d1c\",\n
+        \   \"id\" : \"6413f3d5-e4ab-4430-9423-ecc8a2bfcb84\",\n    \"siteHierarchy\"
+        : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c/6413f3d5-e4ab-4430-9423-ecc8a2bfcb84\",\n
+        \   \"siteNameHierarchy\" : \"Global/EU\"\n  }, {\n    \"parentId\" : \"6413f3d5-e4ab-4430-9423-ecc8a2bfcb84\",\n
+        \   \"additionalInfo\" : [ {\n      \"nameSpace\" : \"Location\",\n      \"attributes\"
+        : {\n        \"addressInheritedFrom\" : \"6413f3d5-e4ab-4430-9423-ecc8a2bfcb84\",\n
+        \       \"type\" : \"area\"\n      }\n    } ],\n    \"name\" : \"Hungary\",\n
+        \   \"instanceTenantId\" : \"67b935c59155f50013515d1c\",\n    \"id\" : \"fe0a9e81-771a-4575-885c-42dfb6a8e206\",\n
+        \   \"siteHierarchy\" : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c/6413f3d5-e4ab-4430-9423-ecc8a2bfcb84/fe0a9e81-771a-4575-885c-42dfb6a8e206\",\n
+        \   \"siteNameHierarchy\" : \"Global/EU/Hungary\"\n  }, {\n    \"parentId\"
+        : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c\",\n    \"additionalInfo\" : [ {\n
+        \     \"nameSpace\" : \"Location\",\n      \"attributes\" : {\n        \"addressInheritedFrom\"
+        : \"02180418-d032-408c-bfc8-cc5eb177eca0\",\n        \"type\" : \"area\"\n
+        \     }\n    } ],\n    \"name\" : \"chengallpattu\",\n    \"instanceTenantId\"
+        : \"67b935c59155f50013515d1c\",\n    \"id\" : \"02180418-d032-408c-bfc8-cc5eb177eca0\",\n
+        \   \"siteHierarchy\" : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c/02180418-d032-408c-bfc8-cc5eb177eca0\",\n
+        \   \"siteNameHierarchy\" : \"Global/chengallpattu\"\n  }, {\n    \"parentId\"
+        : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c\",\n    \"additionalInfo\" : [ {\n
+        \     \"nameSpace\" : \"Location\",\n      \"attributes\" : {\n        \"country\"
+        : \"India\",\n        \"address\" : \"Grand Southern Trunk Road, 603202, Chengalpattu,
+        Chengalpattu, Tamil Nadu, India\",\n        \"latitude\" : \"12.825\",\n        \"addressInheritedFrom\"
+        : \"c32312d6-cdfe-40ff-8b63-0337c652cbd6\",\n        \"type\" : \"building\",\n
+        \       \"longitude\" : \"80.038\"\n      }\n    } ],\n    \"name\" : \"DCC
+        Aishwariya\",\n    \"instanceTenantId\" : \"67b935c59155f50013515d1c\",\n
+        \   \"id\" : \"c32312d6-cdfe-40ff-8b63-0337c652cbd6\",\n    \"siteHierarchy\"
+        : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c/c32312d6-cdfe-40ff-8b63-0337c652cbd6\",\n
+        \   \"siteNameHierarchy\" : \"Global/DCC Aishwariya\"\n  }, {\n    \"parentId\"
+        : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c\",\n    \"additionalInfo\" : [ {\n
+        \     \"nameSpace\" : \"Location\",\n      \"attributes\" : {\n        \"country\"
+        : \"India\",\n        \"address\" : \"Nh Service Road, 603209, Chengalpattu,
+        Chengalpattu, Tamil Nadu, India\",\n        \"latitude\" : \"12.822914784049388\",\n
+        \       \"addressInheritedFrom\" : \"e3016f17-494d-4f41-8fd2-678612b8da4f\",\n
+        \       \"type\" : \"building\",\n        \"longitude\" : \"80.04599747310192\"\n
+        \     }\n    } ],\n    \"name\" : \"UB Building\",\n    \"instanceTenantId\"
+        : \"67b935c59155f50013515d1c\",\n    \"id\" : \"e3016f17-494d-4f41-8fd2-678612b8da4f\",\n
+        \   \"siteHierarchy\" : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c/e3016f17-494d-4f41-8fd2-678612b8da4f\",\n
+        \   \"siteNameHierarchy\" : \"Global/UB Building\"\n  }, {\n    \"parentId\"
+        : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c\",\n    \"additionalInfo\" : [ {\n
+        \     \"nameSpace\" : \"Location\",\n      \"attributes\" : {\n        \"addressInheritedFrom\"
+        : \"a8b01547-2c0d-4625-9cc2-b15b14529ad2\",\n        \"type\" : \"area\"\n
+        \     }\n    } ],\n    \"name\" : \"Bhagalpur\",\n    \"instanceTenantId\"
+        : \"67b935c59155f50013515d1c\",\n    \"id\" : \"a8b01547-2c0d-4625-9cc2-b15b14529ad2\",\n
+        \   \"siteHierarchy\" : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c/a8b01547-2c0d-4625-9cc2-b15b14529ad2\",\n
+        \   \"siteNameHierarchy\" : \"Global/Bhagalpur\"\n  }, {\n    \"parentId\"
+        : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c\",\n    \"additionalInfo\" : [ {\n
+        \     \"nameSpace\" : \"Location\",\n      \"attributes\" : {\n        \"addressInheritedFrom\"
+        : \"3cb22748-0fe1-4109-8d22-51cff360fd8c\",\n        \"type\" : \"area\"\n
+        \     }\n    } ],\n    \"name\" : \"Bihar\",\n    \"instanceTenantId\" : \"67b935c59155f50013515d1c\",\n
+        \   \"id\" : \"3cb22748-0fe1-4109-8d22-51cff360fd8c\",\n    \"siteHierarchy\"
+        : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c/3cb22748-0fe1-4109-8d22-51cff360fd8c\",\n
+        \   \"siteNameHierarchy\" : \"Global/Bihar\"\n  }, {\n    \"parentId\" : \"a8b01547-2c0d-4625-9cc2-b15b14529ad2\",\n
+        \   \"additionalInfo\" : [ {\n      \"nameSpace\" : \"Location\",\n      \"attributes\"
+        : {\n        \"country\" : \"India\",\n        \"address\" : \"Mdr, 812007,
+        TNB College, Bhagalpur, Bhagalpur, Bihar, India\",\n        \"latitude\" :
+        \"25.24\",\n        \"addressInheritedFrom\" : \"ba2f804f-de77-4100-9a01-e55be020fcdb\",\n
+        \       \"type\" : \"building\",\n        \"longitude\" : \"86.95\"\n      }\n
+        \   } ],\n    \"name\" : \"TNB college\",\n    \"instanceTenantId\" : \"67b935c59155f50013515d1c\",\n
+        \   \"id\" : \"ba2f804f-de77-4100-9a01-e55be020fcdb\",\n    \"siteHierarchy\"
+        : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c/a8b01547-2c0d-4625-9cc2-b15b14529ad2/ba2f804f-de77-4100-9a01-e55be020fcdb\",\n
+        \   \"siteNameHierarchy\" : \"Global/Bhagalpur/TNB college\"\n  }, {\n    \"parentId\"
+        : \"915f1bc1-8c72-451b-a77b-17ad921cd660\",\n    \"additionalInfo\" : [ {\n
+        \     \"nameSpace\" : \"Location\",\n      \"attributes\" : {\n        \"addressInheritedFrom\"
+        : \"915f1bc1-8c72-451b-a77b-17ad921cd660\",\n        \"type\" : \"area\"\n
+        \     }\n    } ],\n    \"name\" : \"potheri\",\n    \"instanceTenantId\" :
+        \"67b935c59155f50013515d1c\",\n    \"id\" : \"88587242-dbb9-42ab-8380-7940d5d173f3\",\n
+        \   \"siteHierarchy\" : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c/915f1bc1-8c72-451b-a77b-17ad921cd660/88587242-dbb9-42ab-8380-7940d5d173f3\",\n
+        \   \"siteNameHierarchy\" : \"Global/TamilNadu/potheri\"\n  }, {\n    \"parentId\"
+        : \"88587242-dbb9-42ab-8380-7940d5d173f3\",\n    \"additionalInfo\" : [ {\n
+        \     \"nameSpace\" : \"Location\",\n      \"attributes\" : {\n        \"addressInheritedFrom\"
+        : \"915f1bc1-8c72-451b-a77b-17ad921cd660\",\n        \"type\" : \"area\"\n
+        \     }\n    } ],\n    \"name\" : \"SRM\",\n    \"instanceTenantId\" : \"67b935c59155f50013515d1c\",\n
+        \   \"id\" : \"5dedf680-1b4e-48dc-90d4-2d25f4a410df\",\n    \"siteHierarchy\"
+        : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c/915f1bc1-8c72-451b-a77b-17ad921cd660/88587242-dbb9-42ab-8380-7940d5d173f3/5dedf680-1b4e-48dc-90d4-2d25f4a410df\",\n
+        \   \"siteNameHierarchy\" : \"Global/TamilNadu/potheri/SRM\"\n  }, {\n    \"parentId\"
+        : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c\",\n    \"additionalInfo\" : [ {\n
+        \     \"nameSpace\" : \"Location\",\n      \"attributes\" : {\n        \"addressInheritedFrom\"
+        : \"ce2397f0-5d04-4bc5-ba97-23965e6dcda9\",\n        \"type\" : \"area\"\n
+        \     }\n    } ],\n    \"name\" : \"Tamil Nadu\",\n    \"instanceTenantId\"
+        : \"67b935c59155f50013515d1c\",\n    \"id\" : \"ce2397f0-5d04-4bc5-ba97-23965e6dcda9\",\n
+        \   \"siteHierarchy\" : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c/ce2397f0-5d04-4bc5-ba97-23965e6dcda9\",\n
+        \   \"siteNameHierarchy\" : \"Global/Tamil Nadu\"\n  }, {\n    \"parentId\"
+        : \"ce2397f0-5d04-4bc5-ba97-23965e6dcda9\",\n    \"additionalInfo\" : [ {\n
+        \     \"nameSpace\" : \"Location\",\n      \"attributes\" : {\n        \"country\"
+        : \"India\",\n        \"address\" : \"Nh Service Road, 603209, Chengalpattu,
+        Chengalpattu, Tamil Nadu, India\",\n        \"latitude\" : \"12.8203\",\n
+        \       \"addressInheritedFrom\" : \"6a138253-4d77-4639-b9b9-62e091cea03d\",\n
+        \       \"type\" : \"building\",\n        \"longitude\" : \"80.0396\"\n      }\n
+        \   } ],\n    \"name\" : \"TP-2\",\n    \"instanceTenantId\" : \"67b935c59155f50013515d1c\",\n
+        \   \"id\" : \"6a138253-4d77-4639-b9b9-62e091cea03d\",\n    \"siteHierarchy\"
+        : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c/ce2397f0-5d04-4bc5-ba97-23965e6dcda9/6a138253-4d77-4639-b9b9-62e091cea03d\",\n
+        \   \"siteNameHierarchy\" : \"Global/Tamil Nadu/TP-2\"\n  }, {\n    \"parentId\"
+        : \"5dedf680-1b4e-48dc-90d4-2d25f4a410df\",\n    \"additionalInfo\" : [ {\n
+        \     \"nameSpace\" : \"Location\",\n      \"attributes\" : {\n        \"country\"
+        : \"India\",\n        \"address\" : \"Nh Service Road, 603209, Chengalpattu,
+        Chengalpattu, Tamil Nadu, India\",\n        \"latitude\" : \"12.824752382229804\",\n
+        \       \"addressInheritedFrom\" : \"b61d544f-0225-4029-b829-423524d32109\",\n
+        \       \"type\" : \"building\",\n        \"longitude\" : \"80.04637387081647\"\n
+        \     }\n    } ],\n    \"name\" : \"tp1\",\n    \"instanceTenantId\" : \"67b935c59155f50013515d1c\",\n
+        \   \"id\" : \"b61d544f-0225-4029-b829-423524d32109\",\n    \"siteHierarchy\"
+        : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c/915f1bc1-8c72-451b-a77b-17ad921cd660/88587242-dbb9-42ab-8380-7940d5d173f3/5dedf680-1b4e-48dc-90d4-2d25f4a410df/b61d544f-0225-4029-b829-423524d32109\",\n
+        \   \"siteNameHierarchy\" : \"Global/TamilNadu/potheri/SRM/tp1\"\n  }, {\n
+        \   \"parentId\" : \"b61d544f-0225-4029-b829-423524d32109\",\n    \"additionalInfo\"
+        : [ {\n      \"nameSpace\" : \"mapGeometry\",\n      \"attributes\" : {\n
+        \       \"offsetX\" : \"0.0\",\n        \"offsetY\" : \"0.0\",\n        \"length\"
+        : \"100.0\",\n        \"width\" : \"100.0\",\n        \"height\" : \"10.0\"\n
+        \     }\n    }, {\n      \"nameSpace\" : \"Location\",\n      \"attributes\"
+        : {\n        \"address\" : \"Nh Service Road, 603209, Chengalpattu, Chengalpattu,
+        Tamil Nadu, India\",\n        \"addressInheritedFrom\" : \"b61d544f-0225-4029-b829-423524d32109\",\n
+        \       \"type\" : \"floor\"\n      }\n    }, {\n      \"nameSpace\" : \"mapsSummary\",\n
+        \     \"attributes\" : {\n        \"rfModel\" : \"145145\",\n        \"floorIndex\"
+        : \"8\"\n      }\n    } ],\n    \"name\" : \"Floor 8\",\n    \"instanceTenantId\"
+        : \"67b935c59155f50013515d1c\",\n    \"id\" : \"47503329-a160-41ae-bff0-d87c089eb8d9\",\n
+        \   \"siteHierarchy\" : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c/915f1bc1-8c72-451b-a77b-17ad921cd660/88587242-dbb9-42ab-8380-7940d5d173f3/5dedf680-1b4e-48dc-90d4-2d25f4a410df/b61d544f-0225-4029-b829-423524d32109/47503329-a160-41ae-bff0-d87c089eb8d9\",\n
+        \   \"siteNameHierarchy\" : \"Global/TamilNadu/potheri/SRM/tp1/Floor 8\"\n
+        \ }, {\n    \"parentId\" : \"915f1bc1-8c72-451b-a77b-17ad921cd660\",\n    \"additionalInfo\"
+        : [ {\n      \"nameSpace\" : \"Location\",\n      \"attributes\" : {\n        \"country\"
+        : \"India\",\n        \"address\" : \"Nh Service Road, 603209, Chengalpattu,
+        Chengalpattu, Tamil Nadu, India\",\n        \"latitude\" : \"12.8203\",\n
+        \       \"addressInheritedFrom\" : \"dbaa77bb-ac0c-4835-9d59-9f6b83d2a6d9\",\n
+        \       \"type\" : \"building\",\n        \"longitude\" : \"80.0396\"\n      }\n
+        \   } ],\n    \"name\" : \"tp-2\",\n    \"instanceTenantId\" : \"67b935c59155f50013515d1c\",\n
+        \   \"id\" : \"dbaa77bb-ac0c-4835-9d59-9f6b83d2a6d9\",\n    \"siteHierarchy\"
+        : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c/915f1bc1-8c72-451b-a77b-17ad921cd660/dbaa77bb-ac0c-4835-9d59-9f6b83d2a6d9\",\n
+        \   \"siteNameHierarchy\" : \"Global/TamilNadu/tp-2\"\n  }, {\n    \"parentId\"
+        : \"88587242-dbb9-42ab-8380-7940d5d173f3\",\n    \"additionalInfo\" : [ {\n
+        \     \"nameSpace\" : \"Location\",\n      \"attributes\" : {\n        \"country\"
+        : \"India\",\n        \"address\" : \"Nh Service Road, 603209, Chengalpattu,
+        Chengalpattu, Tamil Nadu, India\",\n        \"latitude\" : \"12.8203\",\n
+        \       \"addressInheritedFrom\" : \"68311ee5-52b2-4d97-abda-231b0cac0066\",\n
+        \       \"type\" : \"building\",\n        \"longitude\" : \"80.0396\"\n      }\n
+        \   } ],\n    \"name\" : \"tp-2\",\n    \"instanceTenantId\" : \"67b935c59155f50013515d1c\",\n
+        \   \"id\" : \"68311ee5-52b2-4d97-abda-231b0cac0066\",\n    \"siteHierarchy\"
+        : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c/915f1bc1-8c72-451b-a77b-17ad921cd660/88587242-dbb9-42ab-8380-7940d5d173f3/68311ee5-52b2-4d97-abda-231b0cac0066\",\n
+        \   \"siteNameHierarchy\" : \"Global/TamilNadu/potheri/tp-2\"\n  }, {\n    \"parentId\"
+        : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c\",\n    \"additionalInfo\" : [ {\n
+        \     \"nameSpace\" : \"Location\",\n      \"attributes\" : {\n        \"addressInheritedFrom\"
+        : \"915f1bc1-8c72-451b-a77b-17ad921cd660\",\n        \"type\" : \"area\"\n
+        \     }\n    } ],\n    \"name\" : \"TamilNadu\",\n    \"instanceTenantId\"
+        : \"67b935c59155f50013515d1c\",\n    \"id\" : \"915f1bc1-8c72-451b-a77b-17ad921cd660\",\n
+        \   \"siteHierarchy\" : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c/915f1bc1-8c72-451b-a77b-17ad921cd660\",\n
+        \   \"siteNameHierarchy\" : \"Global/TamilNadu\"\n  }, {\n    \"parentId\"
+        : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c\",\n    \"additionalInfo\" : [ {\n
+        \     \"nameSpace\" : \"Location\",\n      \"attributes\" : {\n        \"addressInheritedFrom\"
+        : \"1ea8467c-ab5a-4952-8275-4e58364a88a6\",\n        \"type\" : \"area\"\n
+        \     }\n    } ],\n    \"name\" : \"Navi Mumbai\",\n    \"instanceTenantId\"
+        : \"67b935c59155f50013515d1c\",\n    \"id\" : \"1ea8467c-ab5a-4952-8275-4e58364a88a6\",\n
+        \   \"siteHierarchy\" : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c/1ea8467c-ab5a-4952-8275-4e58364a88a6\",\n
+        \   \"siteNameHierarchy\" : \"Global/Navi Mumbai\"\n  }, {\n    \"parentId\"
+        : \"1ea8467c-ab5a-4952-8275-4e58364a88a6\",\n    \"additionalInfo\" : [ {\n
+        \     \"nameSpace\" : \"Location\",\n      \"attributes\" : {\n        \"country\"
+        : \"India\",\n        \"address\" : \"Darave Road, Sector 28, 400614, Nerul,
+        Navi Mumbai, Thane, Maharashtra, India\",\n        \"latitude\" : \"19.026701\",\n
+        \       \"addressInheritedFrom\" : \"29d2d169-7899-4614-b866-71a525b3031a\",\n
+        \       \"type\" : \"building\",\n        \"longitude\" : \"73.018125\"\n
+        \     }\n    } ],\n    \"name\" : \"VIR\",\n    \"instanceTenantId\" : \"67b935c59155f50013515d1c\",\n
+        \   \"id\" : \"29d2d169-7899-4614-b866-71a525b3031a\",\n    \"siteHierarchy\"
+        : \"00f6df3f-c067-4d55-8ff3-059d35bbaa0c/1ea8467c-ab5a-4952-8275-4e58364a88a6/29d2d169-7899-4614-b866-71a525b3031a\",\n
+        \   \"siteNameHierarchy\" : \"Global/Navi Mumbai/VIR\"\n  } ]\n}"
+    headers:
+      Access-Control-Allow-Methods:
+      - HEAD,GET,PUT,POST,DELETE,PATCH
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '16122'
+      Content-Security-Policy:
+      - 'default-src ''self'' http: https: data: blob: ''unsafe-inline'' ''unsafe-eval'';
+        base-uri ''self''; frame-ancestors ''self''; block-all-mixed-content'
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 31 Aug 2026 10:43:24 GMT
+      Server:
+      - pekko-http/1.0.0
+      Via:
+      - api-gateway,upstream
+      X-Content-Type-Options:
+      - nosniff
+      X-Correlation-Id:
+      - d64db61c-de4d-4cf1-b033-46a3c1fbc20a
+      X-Frame-Options:
+      - Deny
+      X-Xss-Protection:
+      - 1; mode=block
+      bapiexecutionid:
+      - dd14199a-5396-4afe-858d-01e061c9fb60
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-type:
+      - application/json;charset=utf-8
+      User-Agent:
+      - python-cisco-dnacsdk/2.3.7.6
+      x-auth-token:
+      - REDACTED
+    method: GET
+    uri: https://sandboxdnac.cisco.com/dna/intent/api/v1/network-device
+  response:
+    body:
+      string: '{"response":[{"memorySize":"NA","family":"Switches and Hubs","lastUpdateTime":1788108506417,"macAddress":"52:54:00:02:19:54","deviceSupportLevel":"Supported","softwareType":"IOS-XE","softwareVersion":"17.12.1prd9","serialNumber":"CML12345UAD","collectionInterval":"Global
+        Default","dnsResolvedManagementAddress":"10.10.20.175","lastManagedResyncReasons":"Periodic","managementState":"Managed","pendingSyncRequestsCount":"0","reasonsForDeviceResync":"Periodic","reasonsForPendingSyncRequests":"","inventoryStatusDetail":"<status><general
+        code=\"SUCCESS\"/></status>","syncRequestedByApp":"","upTime":"220 days, 1:15:24.00","roleSource":"AUTO","locationName":null,"managementIpAddress":"10.10.20.175","platformId":"C9KV-UADP-8P","reachabilityFailureReason":"","reachabilityStatus":"Reachable","series":"Cisco
+        Catalyst 9000 Series Virtual Switches","snmpContact":"","snmpLocation":"","bootDateTime":"2026-01-22
+        15:33:26","interfaceCount":"0","apEthernetMacAddress":null,"lastUpdated":"2026-08-30
+        16:48:26","apManagerInterfaceIp":"","collectionStatus":"Managed","hostname":"sw1","associatedWlcIp":"","errorCode":null,"errorDescription":null,"lastDeviceResyncStartTime":"2026-08-30
+        16:47:55","lineCardCount":"0","lineCardId":"","managedAtleastOnce":true,"tagCount":"0","tunnelUdpPort":null,"uptimeSeconds":19076999,"vendor":"Cisco","waasDeviceMode":null,"description":"Cisco
+        IOS Software [Dublin], Catalyst L3 Switch Software (CAT9K_IOSXE), Version
+        17.12.1prd9, RELEASE SOFTWARE (fc1) Technical Support: http://www.cisco.com/techsupport
+        Copyright (c) 1986-2023 by Cisco Systems, Inc. Compiled Tue 15-Aug-23 16:44
+        by mcpre","type":"Cisco Catalyst 9000 UADP 8 Port Virtual Switch","location":null,"role":"ACCESS","instanceUuid":"aa754801-8895-41e8-8ca5-27ee415c9c42","instanceTenantId":"67b935c59155f50013515d1c","id":"aa754801-8895-41e8-8ca5-27ee415c9c42"},{"memorySize":"NA","family":"Switches
+        and Hubs","lastUpdateTime":1788108513658,"macAddress":"52:54:00:07:29:d0","deviceSupportLevel":"Supported","softwareType":"IOS-XE","softwareVersion":"17.12.1prd9","serialNumber":"CML12345","collectionInterval":"Global
+        Default","dnsResolvedManagementAddress":"10.10.20.176","lastManagedResyncReasons":"Periodic","managementState":"Managed","pendingSyncRequestsCount":"0","reasonsForDeviceResync":"Periodic","reasonsForPendingSyncRequests":"","inventoryStatusDetail":"<status><general
+        code=\"SUCCESS\"/></status>","syncRequestedByApp":"","upTime":"220 days, 1:15:19.00","roleSource":"AUTO","locationName":null,"managementIpAddress":"10.10.20.176","platformId":"C9KV-UADP-8P","reachabilityFailureReason":"","reachabilityStatus":"Reachable","series":"Cisco
+        Catalyst 9000 Series Virtual Switches","snmpContact":"","snmpLocation":"","bootDateTime":"2026-01-22
+        15:33:33","interfaceCount":"0","apEthernetMacAddress":null,"lastUpdated":"2026-08-30
+        16:48:33","apManagerInterfaceIp":"","collectionStatus":"Managed","hostname":"sw2","associatedWlcIp":"","errorCode":null,"errorDescription":null,"lastDeviceResyncStartTime":"2026-08-30
+        16:48:01","lineCardCount":"0","lineCardId":"","managedAtleastOnce":true,"tagCount":"0","tunnelUdpPort":null,"uptimeSeconds":19076992,"vendor":"Cisco","waasDeviceMode":null,"description":"Cisco
+        IOS Software [Dublin], Catalyst L3 Switch Software (CAT9K_IOSXE), Version
+        17.12.1prd9, RELEASE SOFTWARE (fc1) Technical Support: http://www.cisco.com/techsupport
+        Copyright (c) 1986-2023 by Cisco Systems, Inc. Compiled Tue 15-Aug-23 16:44
+        by mcpre","type":"Cisco Catalyst 9000 UADP 8 Port Virtual Switch","location":null,"role":"ACCESS","instanceUuid":"5a105585-b595-4b87-a01d-fd057a54abd4","instanceTenantId":"67b935c59155f50013515d1c","id":"5a105585-b595-4b87-a01d-fd057a54abd4"},{"memorySize":"NA","family":"Switches
+        and Hubs","lastUpdateTime":1788108497903,"macAddress":"52:54:00:05:77:13","deviceSupportLevel":"Supported","softwareType":"IOS-XE","softwareVersion":"17.12.1prd9","serialNumber":"CML12345ABC","collectionInterval":"Global
+        Default","dnsResolvedManagementAddress":"10.10.20.177","lastManagedResyncReasons":"Periodic","managementState":"Managed","pendingSyncRequestsCount":"0","reasonsForDeviceResync":"Periodic","reasonsForPendingSyncRequests":"","inventoryStatusDetail":"<status><general
+        code=\"SUCCESS\"/></status>","syncRequestedByApp":"","upTime":"220 days, 1:15:20.00","roleSource":"AUTO","locationName":null,"managementIpAddress":"10.10.20.177","platformId":"C9KV-UADP-8P","reachabilityFailureReason":"","reachabilityStatus":"Reachable","series":"Cisco
+        Catalyst 9000 Series Virtual Switches","snmpContact":"","snmpLocation":"","bootDateTime":"2026-01-22
+        15:33:17","interfaceCount":"0","apEthernetMacAddress":null,"lastUpdated":"2026-08-30
+        16:48:17","apManagerInterfaceIp":"","collectionStatus":"Managed","hostname":"sw3","associatedWlcIp":"","errorCode":null,"errorDescription":null,"lastDeviceResyncStartTime":"2026-08-30
+        16:47:55","lineCardCount":"0","lineCardId":"","managedAtleastOnce":true,"tagCount":"0","tunnelUdpPort":null,"uptimeSeconds":19077008,"vendor":"Cisco","waasDeviceMode":null,"description":"Cisco
+        IOS Software [Dublin], Catalyst L3 Switch Software (CAT9K_IOSXE), Version
+        17.12.1prd9, RELEASE SOFTWARE (fc1) Technical Support: http://www.cisco.com/techsupport
+        Copyright (c) 1986-2023 by Cisco Systems, Inc. Compiled Tue 15-Aug-23 16:44
+        by mcpre","type":"Cisco Catalyst 9000 UADP 8 Port Virtual Switch","location":null,"role":"ACCESS","instanceUuid":"9314fd24-a900-4877-8ecb-0e885fdb6495","instanceTenantId":"67b935c59155f50013515d1c","id":"9314fd24-a900-4877-8ecb-0e885fdb6495"},{"memorySize":"NA","family":"Switches
+        and Hubs","lastUpdateTime":1788108503054,"macAddress":"52:54:00:0f:1c:07","deviceSupportLevel":"Supported","softwareType":"IOS-XE","softwareVersion":"17.12.1prd9","serialNumber":"CML54321","collectionInterval":"Global
+        Default","dnsResolvedManagementAddress":"10.10.20.178","lastManagedResyncReasons":"Periodic","managementState":"Managed","pendingSyncRequestsCount":"0","reasonsForDeviceResync":"Periodic","reasonsForPendingSyncRequests":"","inventoryStatusDetail":"<status><general
+        code=\"SUCCESS\"/></status>","syncRequestedByApp":"","upTime":"220 days, 1:15:14.00","roleSource":"AUTO","locationName":null,"managementIpAddress":"10.10.20.178","platformId":"C9KV-UADP-8P","reachabilityFailureReason":"","reachabilityStatus":"Reachable","series":"Cisco
+        Catalyst 9000 Series Virtual Switches","snmpContact":"","snmpLocation":"","bootDateTime":"2026-01-22
+        15:33:23","interfaceCount":"0","apEthernetMacAddress":null,"lastUpdated":"2026-08-30
+        16:48:23","apManagerInterfaceIp":"","collectionStatus":"Managed","hostname":"sw4","associatedWlcIp":"","errorCode":null,"errorDescription":null,"lastDeviceResyncStartTime":"2026-08-30
+        16:48:01","lineCardCount":"0","lineCardId":"","managedAtleastOnce":true,"tagCount":"0","tunnelUdpPort":null,"uptimeSeconds":19077003,"vendor":"Cisco","waasDeviceMode":null,"description":"Cisco
+        IOS Software [Dublin], Catalyst L3 Switch Software (CAT9K_IOSXE), Version
+        17.12.1prd9, RELEASE SOFTWARE (fc1) Technical Support: http://www.cisco.com/techsupport
+        Copyright (c) 1986-2023 by Cisco Systems, Inc. Compiled Tue 15-Aug-23 16:44
+        by mcpre","type":"Cisco Catalyst 9000 UADP 8 Port Virtual Switch","location":null,"role":"ACCESS","instanceUuid":"df32db5b-a567-473a-b756-3163e5b23c6a","instanceTenantId":"67b935c59155f50013515d1c","id":"df32db5b-a567-473a-b756-3163e5b23c6a"}],"version":"1.0"}'
+    headers:
+      Access-Control-Allow-Methods:
+      - HEAD,GET,PUT,POST,DELETE,PATCH
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - 'default-src ''self'' http: https: data: blob: ''unsafe-inline'' ''unsafe-eval'';
+        base-uri ''self''; frame-ancestors ''self''; block-all-mixed-content'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Date:
+      - Mon, 31 Aug 2026 10:43:25 GMT
+      Server:
+      - webserver
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - api-gateway,upstream
+      X-Content-Type-Options:
+      - nosniff
+      X-Correlation-Id:
+      - b901a18c-9b80-4891-abb7-e24f523085cb
+      X-Frame-Options:
+      - Deny
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-type:
+      - application/json;charset=utf-8
+      User-Agent:
+      - python-cisco-dnacsdk/2.3.7.6
+      x-auth-token:
+      - REDACTED
+    method: GET
+    uri: https://sandboxdnac.cisco.com/dna/intent/api/v1/image/importation
+  response:
+    body:
+      string: '{"response":[],"version":"1.0"}'
+    headers:
+      Access-Control-Allow-Methods:
+      - HEAD,GET,PUT,POST,DELETE,PATCH
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - 'default-src ''self'' http: https: data: blob: ''unsafe-inline'' ''unsafe-eval'';
+        base-uri ''self''; frame-ancestors ''self''; block-all-mixed-content'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Mon, 31 Aug 2026 10:43:26 GMT
+      Server:
+      - Jetty(9.4.z-SNAPSHOT)
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - api-gateway,upstream
+      X-Content-Type-Options:
+      - nosniff
+      X-Correlation-Id:
+      - 551bf6b2-5df9-4957-9633-03676e86d504
+      X-Frame-Options:
+      - Deny
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-type:
+      - application/json;charset=utf-8
+      User-Agent:
+      - python-cisco-dnacsdk/2.3.7.6
+      x-auth-token:
+      - REDACTED
+    method: GET
+    uri: https://sandboxdnac.cisco.com/dna/intent/api/v1/network-health?timestamp=1788173100000
+  response:
+    body:
+      string: '{"version":"1.0","response":[{"time":"2026-08-31T10:35:00.000+0000","healthScore":100,"totalCount":4,"goodCount":4,"noHealthCount":0,"fairCount":0,"badCount":0,"maintenanceModeCount":0,"entity":null,"timeinMillis":1788172500000}],"measuredBy":"global","latestMeasuredByEntity":null,"latestHealthScore":100,"monitoredDevices":4,"monitoredHealthyDevices":4,"monitoredUnHealthyDevices":0,"noHealthDevices":0,"notApplicableDevices":0,"totalDevices":4,"monitoredPoorHealthDevices":0,"monitoredFairHealthDevices":0,"healthContributingDevices":4,"healthDistirubution":[{"category":"Access","totalCount":4,"healthScore":100,"goodPercentage":100.0,"badPercentage":0.0,"fairPercentage":0.0,"noHealthPercentage":0.0,"goodCount":4.0,"badCount":0.0,"fairCount":0.0,"noHealthCount":0.0,"thirdPartyDeviceCount":0.0}]}'
+    headers:
+      Access-Control-Allow-Methods:
+      - HEAD,GET,PUT,POST,DELETE,PATCH
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '802'
+      Content-Security-Policy:
+      - 'default-src ''self'' http: https: data: blob: ''unsafe-inline'' ''unsafe-eval'';
+        base-uri ''self''; frame-ancestors ''self''; block-all-mixed-content'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Mon, 31 Aug 2026 10:43:27 GMT
+      Server:
+      - webserver
+      Via:
+      - api-gateway,upstream
+      X-Content-Type-Options:
+      - nosniff
+      X-Correlation-Id:
+      - a99a2583-6436-46d6-aa7b-629729567be3
+      X-Frame-Options:
+      - Deny
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-type:
+      - application/json;charset=utf-8
+      User-Agent:
+      - python-cisco-dnacsdk/2.3.7.6
+      x-auth-token:
+      - REDACTED
+    method: GET
+    uri: https://sandboxdnac.cisco.com/dna/intent/api/v1/client-health?timestamp=1788173100000
+  response:
+    body:
+      string: '{"errorMessage":"Timestamp value cannot be in the future."}'
+    headers:
+      Access-Control-Allow-Methods:
+      - HEAD,GET,PUT,POST,DELETE,PATCH
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '59'
+      Content-Security-Policy:
+      - 'default-src ''self'' http: https: data: blob: ''unsafe-inline'' ''unsafe-eval'';
+        base-uri ''self''; frame-ancestors ''self''; block-all-mixed-content'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Mon, 31 Aug 2026 10:43:28 GMT
+      Server:
+      - webserver
+      Via:
+      - api-gateway,upstream
+      X-Content-Type-Options:
+      - nosniff
+      X-Correlation-Id:
+      - caa2ee7b-3852-43f5-a27b-2dd90e0e0d27
+      X-Frame-Options:
+      - Deny
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 400
+      message: Bad Request
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-type:
+      - application/json;charset=utf-8
+      User-Agent:
+      - python-cisco-dnacsdk/2.3.7.6
+      x-auth-token:
+      - REDACTED
+    method: GET
+    uri: https://sandboxdnac.cisco.com/dna/intent/api/v1/issues
+  response:
+    body:
+      string: '{"response":[],"totalCount":"0","version":"1.0"}'
+    headers:
+      Access-Control-Allow-Methods:
+      - HEAD,GET,PUT,POST,DELETE,PATCH
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '48'
+      Content-Security-Policy:
+      - 'default-src ''self'' http: https: data: blob: ''unsafe-inline'' ''unsafe-eval'';
+        base-uri ''self''; frame-ancestors ''self''; block-all-mixed-content'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Mon, 31 Aug 2026 10:43:29 GMT
+      Server:
+      - webserver
+      Via:
+      - api-gateway,upstream
+      X-Content-Type-Options:
+      - nosniff
+      X-Correlation-Id:
+      - 2d373b63-a750-484f-9d17-46cf8be53fc9
+      X-Frame-Options:
+      - Deny
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+version: 1

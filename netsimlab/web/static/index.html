@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>netsim lab</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.9/dist/vis-network.min.js"></script>
+<link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+<header>
+  <h1>netsim <span>lab</span></h1>
+  <div id="env" class="env"></div>
+</header>
+
+<main>
+  <section class="panel graph-panel">
+    <div class="panel-head">
+      <h2>Topology</h2>
+      <span id="topo-name" class="pill"></span>
+    </div>
+    <div id="graph"></div>
+    <div id="validation" class="validation"></div>
+  </section>
+
+  <section class="panel run-panel">
+    <div class="panel-head">
+      <h2>Scenarios</h2>
+      <label>mode
+        <select id="mode">
+          <option value="replay">replay (offline)</option>
+          <option value="record">record (live + save)</option>
+          <option value="live">live</option>
+        </select>
+      </label>
+    </div>
+    <ul id="scenarios" class="scenarios"></ul>
+
+    <div id="runbox" class="runbox" hidden>
+      <div class="panel-head">
+        <h3 id="run-title"></h3>
+        <span id="run-status" class="pill"></span>
+      </div>
+      <div id="steps" class="steps"></div>
+      <div id="comparison" class="comparison"></div>
+    </div>
+  </section>
+</main>
+
+<section class="panel history-panel">
+  <div class="panel-head"><h2>Recent runs</h2><button id="refresh-runs">refresh</button></div>
+  <table id="runs"><thead><tr>
+    <th>run</th><th>scenario</th><th>mode</th><th>pass</th><th>fail</th><th>warn</th><th>snapshot</th>
+  </tr></thead><tbody></tbody></table>
+</section>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

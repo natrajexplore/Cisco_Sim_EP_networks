@@ -1,0 +1,123 @@
+{
+  "counts": {
+    "fail": 0,
+    "info": 0,
+    "pass": 6,
+    "warn": 1
+  },
+  "ended": "2026-08-31T10:46:46+00:00",
+  "mode": "replay",
+  "name": "guest_wireless_onboarding",
+  "ok": true,
+  "started": "2026-08-31T10:46:45+00:00",
+  "steps": [
+    {
+      "data": {
+        "portals": [
+          "Hotspot Guest Portal (default)",
+          "ISE Portal (default)",
+          "Self-Registered Guest Portal (default)",
+          "Sponsor Portal (default)",
+          "Sponsored Guest Portal (default)"
+        ]
+      },
+      "name": "Fetch ISE portals",
+      "notes": [],
+      "request": "GET /ers/config/portal",
+      "summary": "5 portal(s)",
+      "verdict": "pass"
+    },
+    {
+      "data": {
+        "guest_types": [
+          "Contractor (default)",
+          "Daily (default)",
+          "SocialLogin (default)",
+          "Weekly (default)"
+        ]
+      },
+      "name": "Fetch guest types",
+      "notes": [],
+      "request": "GET /ers/config/guesttype",
+      "summary": "4 guest type(s)",
+      "verdict": "pass"
+    },
+    {
+      "data": {
+        "sponsor_portals": [
+          "Sponsor Portal (default)"
+        ]
+      },
+      "name": "Fetch sponsor portals",
+      "notes": [],
+      "request": "GET /ers/config/sponsorportal",
+      "summary": "1 sponsor portal(s)",
+      "verdict": "pass"
+    },
+    {
+      "data": null,
+      "name": "Fetch Catalyst Center wireless profiles",
+      "notes": [],
+      "request": "",
+      "summary": "wireless design not available on sandbox: 404 Client Error: Not Found for url: https://sandboxdnac.cisco.com/dna/intent/api/v1/wireless/profile",
+      "verdict": "warn"
+    },
+    {
+      "data": null,
+      "name": "Guest SSID 'GUEST' design check",
+      "notes": [],
+      "request": "",
+      "summary": "security=hotspot-guest portal='Self-Registered Guest Portal (default)' vlan=50",
+      "verdict": "pass"
+    },
+    {
+      "data": {
+        "auth_method": "guest",
+        "endpoint": "guest-phone-1",
+        "mac": "00:de:ad:be:ef:01",
+        "matched_policy": "Guest-Portal-Redirect",
+        "result": {
+          "dacl": null,
+          "profile": null,
+          "sgt": null,
+          "url_redirect": "GuestPortal",
+          "vlan": "50"
+        }
+      },
+      "name": "guest-phone-1: associate to 'GUEST' (pre-auth)",
+      "notes": [
+        "auth='guest' ~ 'guest'",
+        "portal_state='pre-auth' ~ 'pre-auth'"
+      ],
+      "request": "MAB mac=00:de:ad:be:ef:01 -> portal redirect",
+      "summary": "Guest-Portal-Redirect -> url_redirect=GuestPortal vlan=50",
+      "verdict": "pass"
+    },
+    {
+      "data": {
+        "auth_method": "guest",
+        "endpoint": "guest-phone-1",
+        "mac": "00:de:ad:be:ef:01",
+        "matched_policy": "Guest-Permit",
+        "result": {
+          "dacl": "GUEST_INTERNET",
+          "profile": null,
+          "sgt": "Guests",
+          "url_redirect": null,
+          "vlan": "50"
+        }
+      },
+      "name": "guest-phone-1: portal registration complete -> CoA re-auth",
+      "notes": [
+        "matched 'Guest-Permit' -> {'vlan': '50', 'sgt': 'Guests', 'dacl': 'GUEST_INTERNET', 'url_redirect': None, 'profile': None}",
+        "auth='guest' ~ 'guest'",
+        "portal_state='authenticated' ~ 'authenticated'"
+      ],
+      "request": "CoA (Reauth) issued by ISE",
+      "summary": "Guest-Permit -> vlan=50 sgt=Guests dacl=GUEST_INTERNET",
+      "verdict": "pass"
+    }
+  ],
+  "title": "Guest wireless onboarding",
+  "topology": "campus-small"
+}

@@ -1,0 +1,259 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-type:
+      - application/json;charset=utf-8
+      User-Agent:
+      - python-cisco-ise/3.1_Patch_1
+      authorization:
+      - REDACTED
+    method: GET
+    uri: https://devnetsandboxise.cisco.com/ers/config/endpointgroup
+  response:
+    body:
+      string: "{\n  \"SearchResult\" : {\n    \"total\" : 19,\n    \"resources\" :
+        [ {\n      \"id\" : \"ffa36b00-8bff-11e6-996c-525400b48521\",\n      \"name\"
+        : \"Android\",\n      \"description\" : \"Identity Group for Profile: Android\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpointgroup/ffa36b00-8bff-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"0a4a50f0-8c00-11e6-996c-525400b48521\",\n      \"name\" : \"Apple-iDevice\",\n
+        \     \"description\" : \"Identity Group for Profile: Apple-iDevice\",\n      \"link\"
+        : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpointgroup/0a4a50f0-8c00-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"0c4eac70-8c00-11e6-996c-525400b48521\",\n      \"name\" : \"Axis-Device\",\n
+        \     \"description\" : \"Identity Group for Profile: Axis-Device\",\n      \"link\"
+        : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpointgroup/0c4eac70-8c00-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"0cc7ad00-8c00-11e6-996c-525400b48521\",\n      \"name\" : \"BlackBerry\",\n
+        \     \"description\" : \"Identity Group for Profile: BlackBerry\",\n      \"link\"
+        : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpointgroup/0cc7ad00-8c00-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"aa000c30-8bff-11e6-996c-525400b48521\",\n      \"name\" : \"Blocked List\",\n
+        \     \"description\" : \"Blocked List Identity Group\",\n      \"link\" :
+        {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpointgroup/aa000c30-8bff-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"14f5cac0-8c00-11e6-996c-525400b48521\",\n      \"name\" : \"Cisco-IP-Phone\",\n
+        \     \"description\" : \"Identity Group for Profile: Cisco-IP-Phone\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpointgroup/14f5cac0-8c00-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"1e2700a0-8c00-11e6-996c-525400b48521\",\n      \"name\" : \"Cisco-Meraki-Device\",\n
+        \     \"description\" : \"Identity Group for Profile: Cisco-Meraki-Device\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpointgroup/1e2700a0-8c00-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"22c6c780-8c00-11e6-996c-525400b48521\",\n      \"name\" : \"Epson-Device\",\n
+        \     \"description\" : \"Identity Group for Profile: Epson-Device\",\n      \"link\"
+        : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpointgroup/22c6c780-8c00-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"aa178bd0-8bff-11e6-996c-525400b48521\",\n      \"name\" : \"GuestEndpoints\",\n
+        \     \"description\" : \"Guest Endpoints Identity Group\",\n      \"link\"
+        : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpointgroup/aa178bd0-8bff-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"2b07d100-8c00-11e6-996c-525400b48521\",\n      \"name\" : \"Juniper-Device\",\n
+        \     \"description\" : \"Identity Group for Profile: Juniper-Device\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpointgroup/2b07d100-8c00-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"aeb29380-4fbf-11ed-a871-0050568f5811\",\n      \"name\" : \"OS_X_BigSur-Workstation\",\n
+        \     \"description\" : \"Identity Group for Profile: OS_X_BigSur-Workstation\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpointgroup/aeb29380-4fbf-11ed-a871-0050568f5811\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"aa10ae00-8bff-11e6-996c-525400b48521\",\n      \"name\" : \"Profiled\",\n
+        \     \"description\" : \"Profiled Identity Group\",\n      \"link\" : {\n
+        \       \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpointgroup/aa10ae00-8bff-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"aa13bb40-8bff-11e6-996c-525400b48521\",\n      \"name\" : \"RegisteredDevices\",\n
+        \     \"description\" : \"Asset Registered Endpoints Identity Group\",\n      \"link\"
+        : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpointgroup/aa13bb40-8bff-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"38a73670-8c00-11e6-996c-525400b48521\",\n      \"name\" : \"Sony-Device\",\n
+        \     \"description\" : \"Identity Group for Profile: Sony-Device\",\n      \"link\"
+        : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpointgroup/38a73670-8c00-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"3a1b38d0-8c00-11e6-996c-525400b48521\",\n      \"name\" : \"Synology-Device\",\n
+        \     \"description\" : \"Identity Group for Profile: Synology-Device\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpointgroup/3a1b38d0-8c00-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"3a88eec0-8c00-11e6-996c-525400b48521\",\n      \"name\" : \"Trendnet-Device\",\n
+        \     \"description\" : \"Identity Group for Profile: Trendnet-Device\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpointgroup/3a88eec0-8c00-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"aa0e8b20-8bff-11e6-996c-525400b48521\",\n      \"name\" : \"Unknown\",\n
+        \     \"description\" : \"Unknown Identity Group\",\n      \"link\" : {\n
+        \       \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpointgroup/aa0e8b20-8bff-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"3b113190-8c00-11e6-996c-525400b48521\",\n      \"name\" : \"Vizio-Device\",\n
+        \     \"description\" : \"Identity Group for Profile: Vizio-Device\",\n      \"link\"
+        : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpointgroup/3b113190-8c00-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"3b76f840-8c00-11e6-996c-525400b48521\",\n      \"name\" : \"Workstation\",\n
+        \     \"description\" : \"Identity Group for Profile: Workstation\",\n      \"link\"
+        : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpointgroup/3b76f840-8c00-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    } ]\n  }\n}"
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Mon, 31 Aug 2026 10:43:16 GMT
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - ''
+      Set-Cookie:
+      - REDACTED
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      X-Content-Security-Policy:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-WebKit-CSP:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-type:
+      - application/json;charset=utf-8
+      User-Agent:
+      - python-cisco-ise/3.1_Patch_1
+      authorization:
+      - REDACTED
+      cookie:
+      - REDACTED
+    method: GET
+    uri: https://devnetsandboxise.cisco.com/ers/config/endpoint
+  response:
+    body:
+      string: "{\n  \"SearchResult\" : {\n    \"total\" : 501,\n    \"resources\"
+        : [ {\n      \"id\" : \"2b2d8180-6e47-11ee-8978-005056bfe5f4\",\n      \"name\"
+        : \"00:01:02:03:04:05\",\n      \"link\" : {\n        \"rel\" : \"self\",\n
+        \       \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpoint/2b2d8180-6e47-11ee-8978-005056bfe5f4\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"ba639270-7754-11ee-8978-005056bfe5f4\",\n      \"name\" : \"BB:6B:D6:1A:06:8F\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpoint/ba639270-7754-11ee-8978-005056bfe5f4\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"ba7ff410-7754-11ee-8978-005056bfe5f4\",\n      \"name\" : \"7A:91:D5:B5:98:BD\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpoint/ba7ff410-7754-11ee-8978-005056bfe5f4\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"ba801b20-7754-11ee-8978-005056bfe5f4\",\n      \"name\" : \"18:41:0D:C8:E0:FB\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpoint/ba801b20-7754-11ee-8978-005056bfe5f4\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"ba801b22-7754-11ee-8978-005056bfe5f4\",\n      \"name\" : \"0F:CF:EC:00:49:2F\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpoint/ba801b22-7754-11ee-8978-005056bfe5f4\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"ba809050-7754-11ee-8978-005056bfe5f4\",\n      \"name\" : \"B5:5C:B1:18:2B:B0\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpoint/ba809050-7754-11ee-8978-005056bfe5f4\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"ba90bcf0-7754-11ee-8978-005056bfe5f4\",\n      \"name\" : \"0B:F0:F6:BD:5A:E6\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpoint/ba90bcf0-7754-11ee-8978-005056bfe5f4\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"baa07460-7754-11ee-8978-005056bfe5f4\",\n      \"name\" : \"1F:96:93:3A:C7:F7\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpoint/baa07460-7754-11ee-8978-005056bfe5f4\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"baad93c0-7754-11ee-8978-005056bfe5f4\",\n      \"name\" : \"26:80:31:E7:33:44\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpoint/baad93c0-7754-11ee-8978-005056bfe5f4\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"bacc8d70-7754-11ee-8978-005056bfe5f4\",\n      \"name\" : \"45:70:BE:0C:00:56\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpoint/bacc8d70-7754-11ee-8978-005056bfe5f4\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"bacefe70-7754-11ee-8978-005056bfe5f4\",\n      \"name\" : \"E6:31:63:5E:62:F8\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpoint/bacefe70-7754-11ee-8978-005056bfe5f4\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"bacfc1c0-7754-11ee-8978-005056bfe5f4\",\n      \"name\" : \"50:A1:C7:04:D8:B2\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpoint/bacfc1c0-7754-11ee-8978-005056bfe5f4\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"bad65170-7754-11ee-8978-005056bfe5f4\",\n      \"name\" : \"9F:38:B2:16:A7:38\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpoint/bad65170-7754-11ee-8978-005056bfe5f4\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"bad65172-7754-11ee-8978-005056bfe5f4\",\n      \"name\" : \"5D:08:11:61:D0:A9\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpoint/bad65172-7754-11ee-8978-005056bfe5f4\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"baee4640-7754-11ee-8978-005056bfe5f4\",\n      \"name\" : \"D5:D5:CA:54:29:4A\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpoint/baee4640-7754-11ee-8978-005056bfe5f4\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"baf34f50-7754-11ee-8978-005056bfe5f4\",\n      \"name\" : \"A4:A6:D9:10:64:62\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpoint/baf34f50-7754-11ee-8978-005056bfe5f4\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"baf439b0-7754-11ee-8978-005056bfe5f4\",\n      \"name\" : \"B6:B0:2E:8F:51:5E\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpoint/baf439b0-7754-11ee-8978-005056bfe5f4\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"bb138180-7754-11ee-8978-005056bfe5f4\",\n      \"name\" : \"25:17:6B:95:63:DB\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpoint/bb138180-7754-11ee-8978-005056bfe5f4\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"bb157d50-7754-11ee-8978-005056bfe5f4\",\n      \"name\" : \"50:26:74:70:FA:FC\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpoint/bb157d50-7754-11ee-8978-005056bfe5f4\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"bb175210-7754-11ee-8978-005056bfe5f4\",\n      \"name\" : \"8D:42:64:84:BD:DF\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpoint/bb175210-7754-11ee-8978-005056bfe5f4\",\n
+        \       \"type\" : \"application/json\"\n      }\n    } ],\n    \"nextPage\"
+        : {\n      \"rel\" : \"next\",\n      \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/endpoint?size=20&page=2\",\n
+        \     \"type\" : \"application/json\"\n    }\n  }\n}"
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Mon, 31 Aug 2026 10:43:17 GMT
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - ''
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      X-Content-Security-Policy:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-WebKit-CSP:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+version: 1

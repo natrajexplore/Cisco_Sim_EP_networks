@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "netsimlab"
+version = "0.1.0"
+description = "Lightweight Cisco ISE/NAC, wireless and Catalyst Center scenario simulation framework"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=2.10",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0",
+    "networkx>=3.2",
+    "dnacentersdk>=2.8",
+    "ciscoisesdk>=2.3",
+    "typer>=0.15",
+    "rich>=13.9",
+    "vcrpy>=7.0",
+    "requests>=2.32",
+    "deepdiff>=8.0",
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.34",
+    "jinja2>=3.1",
+    "sse-starlette>=2.1",
+]
+
+[project.optional-dependencies]
+emulate = ["pyats[library]>=24.0"]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+netsim = "netsimlab.cli:app"
+
+[tool.setuptools.packages.find]
+include = ["netsimlab*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ result.title }} — {{ run_id }}</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 14px/1.5 system-ui, sans-serif; margin: 0; background: #f6f7f9; color: #1a1a1a; }
+  @media (prefers-color-scheme: dark) { body { background: #14171a; color: #e8e8e8; } .card { background:#1e2226 !important; border-color:#2c3238 !important; } }
+  header { padding: 20px 28px; background: #0b5cad; color: #fff; }
+  header h1 { margin: 0 0 4px; font-size: 18px; }
+  header .meta { font-size: 12px; opacity: .9; }
+  main { max-width: 1000px; margin: 0 auto; padding: 24px 20px 64px; }
+  .card { background: #fff; border: 1px solid #e2e5e9; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+  .step { display: grid; grid-template-columns: 76px 1fr; gap: 12px; align-items: start; }
+  .badge { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing:.04em; padding: 3px 8px; border-radius: 999px; text-align:center; }
+  .pass { background:#e4f6e9; color: #0f7a35; }
+  .fail { background: #fde5e5; color: #b3261e; }
+  .warn { background: #fff2d8; color: #9a6700; }
+  .info { background: #e7eef7; color: #2b5c9b; }
+  .name { font-weight: 600; }
+  .req { font-family: ui-monospace, monospace; font-size: 12px; opacity: .75; margin: 2px 0; }
+  .sum { margin: 2px 0; }
+  ul.notes { margin: 6px 0 0; padding-left: 18px; font-size: 13px; opacity: .9; }
+  details pre { background: #0d1117; color: #c9d1d9; padding: 10px; border-radius: 6px; overflow:auto; font-size: 12px; }
+  .counts span { margin-right: 12px; font-weight: 600; }
+  .cmp { border-left: 4px solid #0b5cad; }
+</style>
+</head>
+<body>
+<header>
+  <h1>{{ result.title }}</h1>
+  <div class="meta">
+    run <code>{{ run_id }}</code> · mode <b>{{ result.mode }}</b> · topology <b>{{ result.topology }}</b>
+    · {{ result.started }} → {{ result.ended }}
+  </div>
+</header>
+<main>
+  <div class="card">
+    <div class="counts">
+      <span class="pass">{{ result.counts.pass }} pass</span>
+      <span class="fail">{{ result.counts.fail }} fail</span>
+      <span class="warn">{{ result.counts.warn }} warn</span>
+      <span class="info">{{ result.counts.info }} info</span>
+    </div>
+  </div>
+
+  <div class="card cmp">
+    <b>Expected vs actual</b> — status: <b>{{ comparison.status }}</b>
+    {% if comparison.verdict_diff %}
+    <ul class="notes">
+      {% for name, d in comparison.verdict_diff.items() %}
+      <li>{{ name }}: expected <b>{{ d.expected }}</b>, actual <b>{{ d.actual }}</b></li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <div class="sum">No verdict drift from the golden snapshot.</div>
+    {% endif %}
+  </div>
+
+  {% for step in result.steps %}
+  <div class="card step">
+    <div class="badge {{ step.verdict }}">{{ step.verdict }}</div>
+    <div>
+      <div class="name">{{ step.name }}</div>
+      {% if step.request %}<div class="req">{{ step.request }}</div>{% endif %}
+      {% if step.summary %}<div class="sum">{{ step.summary }}</div>{% endif %}
+      {% if step.notes %}<ul class="notes">{% for n in step.notes %}<li>{{ n }}</li>{% endfor %}</ul>{% endif %}
+      {% if step.data %}<details><summary>data</summary><pre>{{ step.data | tojson(indent=2) }}</pre></details>{% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</main>
+</body>
+</html>

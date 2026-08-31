@@ -1,0 +1,102 @@
+{
+  "counts": {
+    "fail": 0,
+    "info": 2,
+    "pass": 0,
+    "warn": 3
+  },
+  "ended": "2026-08-31T10:46:56+00:00",
+  "mode": "replay",
+  "name": "wireless_rf_exploration",
+  "ok": true,
+  "started": "2026-08-31T10:46:56+00:00",
+  "steps": [
+    {
+      "data": {
+        "aps": []
+      },
+      "name": "Read AP telemetry from Catalyst Center",
+      "notes": [],
+      "request": "GET /dna/intent/api/v1/device-health?deviceRole=AP",
+      "summary": "0 AP record(s) from sandbox",
+      "verdict": "info"
+    },
+    {
+      "data": null,
+      "name": "RF baseline (topology rf_profile)",
+      "notes": [],
+      "request": "",
+      "summary": "util<=60% noise<=-85dBm interference<=30% air_quality>=70 coverage RSSI>=-75dBm",
+      "verdict": "info"
+    },
+    {
+      "data": {
+        "ap": "ap-floor1-a",
+        "band_2_4ghz": {
+          "air_quality": 83,
+          "channel": 11,
+          "channel_utilization_pct": 67,
+          "interference_pct": 22,
+          "noise_dbm": -81
+        },
+        "band_5ghz": {
+          "air_quality": 92,
+          "channel": 36,
+          "channel_utilization_pct": 32,
+          "interference_pct": 12,
+          "noise_dbm": -98
+        },
+        "min_client_rssi_dbm": -82
+      },
+      "name": "RF assessment: ap-floor1-a (Floor-1)",
+      "notes": [
+        "[WARN] 2.4GHz: channel utilization 67% > 60%",
+        "[WARN] 2.4GHz: noise floor -81 dBm > -85 dBm",
+        "[CRIT] coverage: weakest client RSSI -82 dBm < -75 dBm (coverage hole)"
+      ],
+      "request": "RRM/Assurance RF snapshot for ap-floor1-a",
+      "summary": "3 RF finding(s), 1 critical",
+      "verdict": "warn"
+    },
+    {
+      "data": {
+        "ap": "ap-floor2-a",
+        "band_2_4ghz": {
+          "air_quality": 86,
+          "channel": 11,
+          "channel_utilization_pct": 49,
+          "interference_pct": 19,
+          "noise_dbm": -90
+        },
+        "band_5ghz": {
+          "air_quality": 78,
+          "channel": 44,
+          "channel_utilization_pct": 32,
+          "interference_pct": 11,
+          "noise_dbm": -89
+        },
+        "min_client_rssi_dbm": -79
+      },
+      "name": "RF assessment: ap-floor2-a (Floor-2)",
+      "notes": [
+        "[CRIT] coverage: weakest client RSSI -79 dBm < -75 dBm (coverage hole)"
+      ],
+      "request": "RRM/Assurance RF snapshot for ap-floor2-a",
+      "summary": "1 RF finding(s), 1 critical",
+      "verdict": "warn"
+    },
+    {
+      "data": null,
+      "name": "RF exploration summary",
+      "notes": [
+        "Remediation levers: RRM DCA/TPC, band steering, 2.4GHz radio disable on dense floors,",
+        "channel-width tuning, add/relocate APs for coverage holes."
+      ],
+      "request": "",
+      "summary": "4 total RF finding(s) across 2 AP(s)",
+      "verdict": "warn"
+    }
+  ],
+  "title": "Wireless RF issue exploration",
+  "topology": "campus-small"
+}

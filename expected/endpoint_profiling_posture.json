@@ -1,0 +1,158 @@
+{
+  "counts": {
+    "fail": 0,
+    "info": 2,
+    "pass": 3,
+    "warn": 1
+  },
+  "ended": "2026-08-31T10:46:50+00:00",
+  "mode": "replay",
+  "name": "endpoint_profiling_posture",
+  "ok": true,
+  "started": "2026-08-31T10:46:49+00:00",
+  "steps": [
+    {
+      "data": {
+        "endpoint_groups": [
+          "Android",
+          "Apple-iDevice",
+          "Axis-Device",
+          "BlackBerry",
+          "Blocked List",
+          "Cisco-IP-Phone",
+          "Cisco-Meraki-Device",
+          "Epson-Device",
+          "GuestEndpoints",
+          "Juniper-Device",
+          "OS_X_BigSur-Workstation",
+          "Profiled",
+          "RegisteredDevices",
+          "Sony-Device",
+          "Synology-Device",
+          "Trendnet-Device",
+          "Unknown",
+          "Vizio-Device",
+          "Workstation"
+        ]
+      },
+      "name": "Fetch endpoint identity groups (profiler targets)",
+      "notes": [],
+      "request": "GET /ers/config/endpointgroup",
+      "summary": "19 endpoint group(s)",
+      "verdict": "pass"
+    },
+    {
+      "data": {
+        "sample": [
+          "00:01:02:03:04:05",
+          "BB:6B:D6:1A:06:8F",
+          "7A:91:D5:B5:98:BD",
+          "18:41:0D:C8:E0:FB",
+          "0F:CF:EC:00:49:2F",
+          "B5:5C:B1:18:2B:B0",
+          "0B:F0:F6:BD:5A:E6",
+          "1F:96:93:3A:C7:F7",
+          "26:80:31:E7:33:44",
+          "45:70:BE:0C:00:56"
+        ]
+      },
+      "name": "Fetch known endpoints from ISE",
+      "notes": [],
+      "request": "GET /ers/config/endpoint",
+      "summary": "20 endpoint(s) already learned by ISE",
+      "verdict": "pass"
+    },
+    {
+      "data": {
+        "auth_method": "mab",
+        "endpoint": "floor1-printer",
+        "mac": "00:11:22:33:44:55",
+        "matched_policy": null,
+        "result": {
+          "dacl": null,
+          "profile": null,
+          "sgt": null,
+          "url_redirect": null,
+          "vlan": null
+        }
+      },
+      "name": "Profile floor1-printer (mac 00:11:22:33:44:55)",
+      "notes": [
+        "no matching policy - default deny / no access"
+      ],
+      "request": "device-sensor attrs: oui=Hewlett Packard, dhcp_class_id=HP LaserJet",
+      "summary": "logical profile: (unclassified -> Unknown)",
+      "verdict": "info"
+    },
+    {
+      "data": {
+        "auth_method": "dot1x",
+        "endpoint": "lobby-ipphone",
+        "mac": "00:aa:bb:cc:dd:ee",
+        "matched_policy": "Profile-IP-Phone",
+        "result": {
+          "dacl": null,
+          "profile": "IP-Phones",
+          "sgt": "Voice",
+          "url_redirect": null,
+          "vlan": null
+        }
+      },
+      "name": "Profile lobby-ipphone (mac 00:aa:bb:cc:dd:ee)",
+      "notes": [
+        "cdp_platform='Cisco IP Phone 8845' ~ 'Cisco IP Phone'",
+        "oui='Cisco Systems' ~ 'Cisco Systems'"
+      ],
+      "request": "device-sensor attrs: cdp_platform=Cisco IP Phone 8845, oui=Cisco Systems",
+      "summary": "logical profile: IP-Phones, SGT Voice",
+      "verdict": "pass"
+    },
+    {
+      "data": {
+        "auth_method": "dot1x",
+        "endpoint": "byod-tablet-1",
+        "mac": "00:ca:fe:ba:be:02",
+        "matched_policy": null,
+        "result": {
+          "dacl": null,
+          "profile": null,
+          "sgt": null,
+          "url_redirect": null,
+          "vlan": null
+        }
+      },
+      "name": "Profile byod-tablet-1 (mac 00:ca:fe:ba:be:02)",
+      "notes": [
+        "no matching policy - default deny / no access"
+      ],
+      "request": "device-sensor attrs: posture_status=non_compliant",
+      "summary": "logical profile: (unclassified -> Unknown)",
+      "verdict": "info"
+    },
+    {
+      "data": {
+        "auth_method": "dot1x",
+        "endpoint": "byod-tablet-1",
+        "mac": "00:ca:fe:ba:be:02",
+        "matched_policy": "Posture-Compliant",
+        "result": {
+          "dacl": null,
+          "profile": null,
+          "sgt": "Employees",
+          "url_redirect": null,
+          "vlan": "20"
+        }
+      },
+      "name": "Posture assessment: byod-tablet-1",
+      "notes": [
+        "non-compliant - CoA to quarantine / remediation VLAN",
+        "posture_status='non_compliant' ~ 'compliant'"
+      ],
+      "request": "posture report: status=non_compliant",
+      "summary": "Posture-Compliant -> vlan=20 sgt=Employees dacl=None",
+      "verdict": "warn"
+    }
+  ],
+  "title": "Endpoint profiling + posture",
+  "topology": "campus-small"
+}

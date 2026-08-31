@@ -1,0 +1,100 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      User-Agent:
+      - python-requests/2.32.3
+      authorization:
+      - REDACTED
+    method: POST
+    uri: https://sandboxdnac.cisco.com/dna/system/api/v1/auth/token
+  response:
+    body:
+      string: "{\n \"Token\": \"REDACTED\",\n \"message\": \"\"\n}"
+    headers:
+      Access-Control-Allow-Methods:
+      - HEAD,GET,PUT,POST,DELETE,PATCH
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '900'
+      Content-Security-Policy:
+      - 'default-src ''self'' http: https: data: blob: ''unsafe-inline'' ''unsafe-eval'';
+        base-uri ''self''; frame-ancestors ''self''; block-all-mixed-content'
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 31 Aug 2026 10:43:09 GMT
+      Server:
+      - webserver
+      Via:
+      - api-gateway,upstream
+      X-Content-Type-Options:
+      - nosniff
+      X-Correlation-Id:
+      - 38fa52e6-a87e-4b2d-b73b-96cfdd74f10d
+      X-Frame-Options:
+      - Deny
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-type:
+      - application/json;charset=utf-8
+      User-Agent:
+      - python-cisco-dnacsdk/2.3.7.6
+      x-auth-token:
+      - REDACTED
+    method: GET
+    uri: https://sandboxdnac.cisco.com/dna/intent/api/v1/wireless/profile
+  response:
+    body:
+      string: Profile Not Found
+    headers:
+      Access-Control-Allow-Methods:
+      - HEAD,GET,PUT,POST,DELETE,PATCH
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '17'
+      Content-Security-Policy:
+      - 'default-src ''self'' http: https: data: blob: ''unsafe-inline'' ''unsafe-eval'';
+        base-uri ''self''; frame-ancestors ''self''; block-all-mixed-content'
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 31 Aug 2026 10:43:11 GMT
+      Server:
+      - pekko-http/1.0.0
+      Via:
+      - api-gateway,upstream
+      X-Correlation-Id:
+      - 155c2686-bdee-46d7-b3cc-36f010335365
+      X-Frame-Options:
+      - Deny
+      X-Xss-Protection:
+      - 1; mode=block
+      bapiexecutionid:
+      - 4b6102f1-25f4-4750-a27f-b77a4837c850
+    status:
+      code: 404
+      message: Not Found
+version: 1

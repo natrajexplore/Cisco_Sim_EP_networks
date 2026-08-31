@@ -1,0 +1,232 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-type:
+      - application/json;charset=utf-8
+      User-Agent:
+      - python-cisco-ise/3.1_Patch_1
+      authorization:
+      - REDACTED
+    method: GET
+    uri: https://devnetsandboxise.cisco.com/ers/config/portal
+  response:
+    body:
+      string: "{\n  \"SearchResult\" : {\n    \"total\" : 5,\n    \"resources\" :
+        [ {\n      \"id\" : \"ac6b8399-ef91-4ef3-97d2-46adaab82d42\",\n      \"name\"
+        : \"Sponsor Portal (default)\",\n      \"description\" : \"Default portal
+        used by sponsors to create and manage accounts for authorized visitors to
+        securely access the network\",\n      \"link\" : {\n        \"rel\" : \"self\",\n
+        \       \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/portal/ac6b8399-ef91-4ef3-97d2-46adaab82d42\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"a486c6ef-6c77-4bc1-bf6d-4e479b3aeae8\",\n      \"name\" : \"ISE Portal (default)\",\n
+        \     \"description\" : \"Ise Portal for saml based feature purpose\",\n      \"link\"
+        : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/portal/a486c6ef-6c77-4bc1-bf6d-4e479b3aeae8\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"f09aaac2-f101-45ed-832f-fda201ab7639\",\n      \"name\" : \"Self-Registered
+        Guest Portal (default)\",\n      \"description\" : \"Guests may create their
+        own accounts and be assigned a username and password, or use their social
+        login to access the network\",\n      \"link\" : {\n        \"rel\" : \"self\",\n
+        \       \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/portal/f09aaac2-f101-45ed-832f-fda201ab7639\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"a18f8300-ec46-4104-b28b-4d3f64a746ab\",\n      \"name\" : \"Sponsored Guest
+        Portal (default)\",\n      \"description\" : \"Sponsors create guest accounts,
+        and guests access the network using their assigned username and password\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/portal/a18f8300-ec46-4104-b28b-4d3f64a746ab\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"af156e64-4d2b-4026-8ab2-c8dd9b14a59b\",\n      \"name\" : \"Hotspot Guest
+        Portal (default)\",\n      \"description\" : \"Guests do not require username
+        and password credentials to access the network, but you can optionally require
+        an access code\",\n      \"link\" : {\n        \"rel\" : \"self\",\n        \"href\"
+        : \"https://devnetsandboxise.cisco.com/ers/config/portal/af156e64-4d2b-4026-8ab2-c8dd9b14a59b\",\n
+        \       \"type\" : \"application/json\"\n      }\n    } ]\n  }\n}"
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Mon, 31 Aug 2026 10:43:05 GMT
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - ''
+      Set-Cookie:
+      - REDACTED
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      X-Content-Security-Policy:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-WebKit-CSP:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-type:
+      - application/json;charset=utf-8
+      User-Agent:
+      - python-cisco-ise/3.1_Patch_1
+      authorization:
+      - REDACTED
+      cookie:
+      - REDACTED
+    method: GET
+    uri: https://devnetsandboxise.cisco.com/ers/config/guesttype
+  response:
+    body:
+      string: "{\n  \"SearchResult\" : {\n    \"total\" : 4,\n    \"resources\" :
+        [ {\n      \"id\" : \"9f03a151-8c01-11e6-996c-525400b48521\",\n      \"name\"
+        : \"Contractor (default)\",\n      \"description\" : \"Default settings allow
+        network access for up to a year.\",\n      \"link\" : {\n        \"rel\" :
+        \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/guesttype/9f03a151-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"9eeda851-8c01-11e6-996c-525400b48521\",\n      \"name\" : \"Daily (default)\",\n
+        \     \"description\" : \"Default settings allow network access for just 1-5
+        days.\",\n      \"link\" : {\n        \"rel\" : \"self\",\n        \"href\"
+        : \"https://devnetsandboxise.cisco.com/ers/config/guesttype/9eeda851-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"76472553-9946-4fa5-bff0-1b8df32b3599\",\n      \"name\" : \"SocialLogin
+        (default)\",\n      \"description\" : \"Default settings for social login
+        users to allow network access for just 1-5 days.\",\n      \"link\" : {\n
+        \       \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/guesttype/76472553-9946-4fa5-bff0-1b8df32b3599\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"9efd11a1-8c01-11e6-996c-525400b48521\",\n      \"name\" : \"Weekly (default)\",\n
+        \     \"description\" : \"Default settings allow network access for a couple
+        of weeks.\",\n      \"link\" : {\n        \"rel\" : \"self\",\n        \"href\"
+        : \"https://devnetsandboxise.cisco.com/ers/config/guesttype/9efd11a1-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    } ]\n  }\n}"
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Mon, 31 Aug 2026 10:43:06 GMT
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - ''
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      X-Content-Security-Policy:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-WebKit-CSP:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-type:
+      - application/json;charset=utf-8
+      User-Agent:
+      - python-cisco-ise/3.1_Patch_1
+      authorization:
+      - REDACTED
+      cookie:
+      - REDACTED
+    method: GET
+    uri: https://devnetsandboxise.cisco.com/ers/config/sponsorportal
+  response:
+    body:
+      string: "{\n  \"SearchResult\" : {\n    \"total\" : 1,\n    \"resources\" :
+        [ {\n      \"id\" : \"ac6b8399-ef91-4ef3-97d2-46adaab82d42\",\n      \"name\"
+        : \"Sponsor Portal (default)\",\n      \"description\" : \"Default portal
+        used by sponsors to create and manage accounts for authorized visitors to
+        securely access the network\",\n      \"link\" : {\n        \"rel\" : \"self\",\n
+        \       \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/sponsorportal/ac6b8399-ef91-4ef3-97d2-46adaab82d42\",\n
+        \       \"type\" : \"application/json\"\n      }\n    } ]\n  }\n}"
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Mon, 31 Aug 2026 10:43:08 GMT
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - ''
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      X-Content-Security-Policy:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-WebKit-CSP:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+version: 1

@@ -1,0 +1,183 @@
+{
+  "counts": {
+    "fail": 0,
+    "info": 0,
+    "pass": 8,
+    "warn": 0
+  },
+  "ended": "2026-08-31T10:46:42+00:00",
+  "mode": "replay",
+  "name": "wired_dot1x_mab",
+  "ok": true,
+  "started": "2026-08-31T10:46:42+00:00",
+  "steps": [
+    {
+      "data": {
+        "nads": [
+          "CSR1000v",
+          "Cat8000"
+        ]
+      },
+      "name": "Fetch Network Access Devices (NADs) from ISE",
+      "notes": [],
+      "request": "GET /ers/config/networkdevice",
+      "summary": "2 NAD(s) registered in ISE",
+      "verdict": "pass"
+    },
+    {
+      "data": {
+        "profiles": [
+          "Block_Wireless_Access",
+          "Cisco_IP_Phones",
+          "Cisco_Temporal_Onboard",
+          "Cisco_WebAuth",
+          "DenyAccess",
+          "NSP_Onboard",
+          "Non_Cisco_IP_Phones",
+          "PermitAccess",
+          "UDN"
+        ]
+      },
+      "name": "Fetch Authorization Profiles",
+      "notes": [],
+      "request": "GET /ers/config/authorizationprofile",
+      "summary": "9 authorization profiles",
+      "verdict": "pass"
+    },
+    {
+      "data": {
+        "dacls": [
+          "DENY_ALL_IPV4_TRAFFIC",
+          "DENY_ALL_IPV6_TRAFFIC",
+          "PERMIT_ALL_IPV4_TRAFFIC",
+          "PERMIT_ALL_IPV6_TRAFFIC"
+        ]
+      },
+      "name": "Fetch Downloadable ACLs",
+      "notes": [],
+      "request": "GET /ers/config/downloadableacl",
+      "summary": "4 dACL(s)",
+      "verdict": "pass"
+    },
+    {
+      "data": {
+        "sgts": [
+          "Auditors",
+          "BYOD",
+          "Contractors",
+          "Developers",
+          "Development_Servers",
+          "Employees",
+          "Guests",
+          "Network_Services",
+          "PCI_Servers",
+          "Point_of_Sale_Systems",
+          "Production_Servers",
+          "Production_Users",
+          "Quarantined_Systems",
+          "Test_Servers",
+          "TrustSec_Devices",
+          "Unknown"
+        ]
+      },
+      "name": "Fetch TrustSec Security Group Tags",
+      "notes": [],
+      "request": "GET /ers/config/sgt",
+      "summary": "16 SGT(s)",
+      "verdict": "pass"
+    },
+    {
+      "data": {
+        "identity_groups": [
+          "ALL_ACCOUNTS (default)",
+          "Employee",
+          "GROUP_ACCOUNTS (default)",
+          "GuestType_Contractor (default)",
+          "GuestType_Daily (default)",
+          "GuestType_SocialLogin (default)",
+          "GuestType_Weekly (default)",
+          "OWN_ACCOUNTS (default)"
+        ]
+      },
+      "name": "Fetch Identity Groups",
+      "notes": [],
+      "request": "GET /ers/config/identitygroup",
+      "summary": "8 identity group(s)",
+      "verdict": "pass"
+    },
+    {
+      "data": {
+        "auth_method": "dot1x",
+        "endpoint": "emp-laptop-1",
+        "mac": "00:1a:2b:3c:4d:5e",
+        "matched_policy": "Employee-Wired-Dot1x",
+        "result": {
+          "dacl": "PERMIT_ALL",
+          "profile": null,
+          "sgt": "Employees",
+          "url_redirect": null,
+          "vlan": "20"
+        }
+      },
+      "name": "Authorize emp-laptop-1 (DOT1X) on access-1 GigabitEthernet1/0/10",
+      "notes": [
+        "matched 'Employee-Wired-Dot1x' -> {'vlan': '20', 'sgt': 'Employees', 'dacl': 'PERMIT_ALL', 'url_redirect': None, 'profile': None}",
+        "identity_group='Employees' ~ 'Employees'",
+        "auth='dot1x' ~ 'dot1x'"
+      ],
+      "request": "simulated RADIUS Access-Request mac=00:1a:2b:3c:4d:5e identity=employee1",
+      "summary": "Employee-Wired-Dot1x -> vlan=20 sgt=Employees dacl=PERMIT_ALL",
+      "verdict": "pass"
+    },
+    {
+      "data": {
+        "auth_method": "mab",
+        "endpoint": "floor1-printer",
+        "mac": "00:11:22:33:44:55",
+        "matched_policy": "Printer-MAB",
+        "result": {
+          "dacl": "PRINT_ONLY",
+          "profile": null,
+          "sgt": "Printers",
+          "url_redirect": null,
+          "vlan": "30"
+        }
+      },
+      "name": "Authorize floor1-printer (MAB) on access-1 GigabitEthernet1/0/20",
+      "notes": [
+        "matched 'Printer-MAB' -> {'vlan': '30', 'sgt': 'Printers', 'dacl': 'PRINT_ONLY', 'url_redirect': None, 'profile': None}",
+        "identity_group='Printers' ~ 'Printers'",
+        "auth='mab' ~ 'mab'"
+      ],
+      "request": "simulated RADIUS Access-Request mac=00:11:22:33:44:55 identity=-",
+      "summary": "Printer-MAB -> vlan=30 sgt=Printers dacl=PRINT_ONLY",
+      "verdict": "pass"
+    },
+    {
+      "data": {
+        "auth_method": "dot1x",
+        "endpoint": "lobby-ipphone",
+        "mac": "00:aa:bb:cc:dd:ee",
+        "matched_policy": "Phone-Dot1x",
+        "result": {
+          "dacl": "PERMIT_ALL",
+          "profile": null,
+          "sgt": "Voice",
+          "url_redirect": null,
+          "vlan": "40"
+        }
+      },
+      "name": "Authorize lobby-ipphone (DOT1X) on access-2 GigabitEthernet1/0/5",
+      "notes": [
+        "matched 'Phone-Dot1x' -> {'vlan': '40', 'sgt': 'Voice', 'dacl': 'PERMIT_ALL', 'url_redirect': None, 'profile': None}",
+        "identity_group='IP-Phones' ~ 'IP-Phones'",
+        "auth='dot1x' ~ 'dot1x'"
+      ],
+      "request": "simulated RADIUS Access-Request mac=00:aa:bb:cc:dd:ee identity=CP-8845-SEP00AABBCCDDEE",
+      "summary": "Phone-Dot1x -> vlan=40 sgt=Voice dacl=PERMIT_ALL",
+      "verdict": "pass"
+    }
+  ],
+  "title": "Wired 802.1X + MAB NAC",
+  "topology": "campus-small"
+}

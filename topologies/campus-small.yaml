@@ -1,0 +1,172 @@
+name: campus-small
+description: >
+  Small single-building campus used to exercise ISE/NAC, guest wireless, endpoint
+  profiling/posture, Catalyst Center provisioning/assurance and wireless RF scenarios
+  against the Cisco DevNet always-on sandboxes.
+
+devices:
+  - name: catalyst-center
+    role: catalyst_center
+    platform: DN2-HW-APL
+    mgmt_ip: 10.10.20.85
+  - name: ise-psn-1
+    role: ise
+    platform: SNS-3615
+    mgmt_ip: 10.10.20.70
+
+  - name: core-1
+    role: core
+    platform: C9500-40X
+    mgmt_ip: 10.10.10.1
+    site: { area: Global, building: HQ }
+
+  - name: dist-1
+    role: distribution
+    platform: C9400
+    mgmt_ip: 10.10.10.2
+    site: { area: Global, building: HQ }
+
+  - name: access-1
+    role: access
+    platform: C9300-48P
+    mgmt_ip: 10.10.11.11
+    site: { area: Global, building: HQ, floor: Floor-1 }
+  - name: access-2
+    role: access
+    platform: C9300-48P
+    mgmt_ip: 10.10.11.12
+    site: { area: Global, building: HQ, floor: Floor-2 }
+
+  - name: wlc-1
+    role: wlc
+    platform: C9800-40
+    mgmt_ip: 10.10.20.51
+    site: { area: Global, building: HQ }
+
+  - name: ap-floor1-a
+    role: ap
+    platform: C9130AXI
+    wlc: wlc-1
+    site: { area: Global, building: HQ, floor: Floor-1 }
+  - name: ap-floor2-a
+    role: ap
+    platform: C9130AXI
+    wlc: wlc-1
+    site: { area: Global, building: HQ, floor: Floor-2 }
+
+links:
+  - { a: core-1, b: dist-1, kind: fiber }
+  - { a: dist-1, b: access-1, kind: fiber }
+  - { a: dist-1, b: access-2, kind: fiber }
+  - { a: dist-1, b: wlc-1, kind: trunk }
+  - { a: access-1, b: ap-floor1-a, kind: trunk, access_vlan: 100 }
+  - { a: access-2, b: ap-floor2-a, kind: trunk, access_vlan: 100 }
+
+policies:
+  - name: Employee-Wired-Dot1x
+    kind: authz
+    match: { identity_group: Employees, auth: dot1x }
+    result: { vlan: "20", sgt: "Employees", dacl: PERMIT_ALL }
+  - name: Printer-MAB
+    kind: authz
+    match: { identity_group: Printers, auth: mab }
+    result: { vlan: "30", sgt: "Printers", dacl: PRINT_ONLY }
+  - name: Phone-Dot1x
+    kind: authz
+    match: { identity_group: IP-Phones, auth: dot1x }
+    result: { vlan: "40", sgt: "Voice", dacl: PERMIT_ALL }
+  - name: Guest-Portal-Redirect
+    kind: authz
+    match: { auth: guest, portal_state: pre-auth }
+    result: { vlan: "50", url_redirect: GuestPortal }
+  - name: Guest-Permit
+    kind: authz
+    match: { auth: guest, portal_state: authenticated }
+    result: { vlan: "50", sgt: "Guests", dacl: GUEST_INTERNET }
+  - name: Profile-IP-Phone
+    kind: profiler
+    match: { cdp_platform: "Cisco IP Phone", oui: "Cisco Systems" }
+    result: { logical_profile: IP-Phones, sgt: "Voice" }
+  - name: Posture-Compliant
+    kind: posture
+    match: { posture_status: compliant }
+    result: { vlan: "20", sgt: "Employees" }
+  - name: Posture-NonCompliant
+    kind: posture
+    match: { posture_status: non_compliant }
+    result: { vlan: "999", sgt: "Quarantine", dacl: REMEDIATION_ONLY }
+
+ssids:
+  - name: CORP
+    security: wpa2-enterprise
+    auth_method: dot1x
+    vlan: 20
+    band: ["5GHz", "6GHz"]
+    policy: Employee-Wired-Dot1x
+  - name: GUEST
+    security: hotspot-guest
+    auth_method: guest
+    vlan: 50
+    band: ["2.4GHz", "5GHz"]
+    portal: "Self-Registered Guest Portal (default)"
+    policy: Guest-Portal-Redirect
+
+endpoints:
+  - name: emp-laptop-1
+    mac: 00:1A:2B:3C:4D:5E
+    kind: workstation
+    connects_to: access-1
+    port: GigabitEthernet1/0/10
+    auth_method: dot1x
+    identity: employee1
+    expected_vlan: 20
+    expected_sgt: Employees
+    expected_authz_profile: Employee-Wired-Dot1x
+  - name: floor1-printer
+    mac: 00:11:22:33:44:55
+    kind: printer
+    connects_to: access-1
+    port: GigabitEthernet1/0/20
+    auth_method: mab
+    expected_vlan: 30
+    expected_sgt: Printers
+    expected_authz_profile: Printer-MAB
+    attributes:
+      oui: "Hewlett Packard"
+      dhcp_class_id: "HP LaserJet"
+  - name: lobby-ipphone
+    mac: 00:AA:BB:CC:DD:EE
+    kind: phone
+    connects_to: access-2
+    port: GigabitEthernet1/0/5
+    auth_method: dot1x
+    identity: CP-8845-SEP00AABBCCDDEE
+    expected_vlan: 40
+    expected_sgt: Voice
+    expected_authz_profile: Phone-Dot1x
+    attributes:
+      cdp_platform: "Cisco IP Phone 8845"
+      oui: "Cisco Systems"
+  - name: guest-phone-1
+    mac: 00:DE:AD:BE:EF:01
+    kind: guest
+    connects_to: GUEST
+    auth_method: guest
+    expected_vlan: 50
+    expected_sgt: Guests
+  - name: byod-tablet-1
+    mac: 00:CA:FE:BA:BE:02
+    kind: byod
+    connects_to: CORP
+    auth_method: dot1x
+    identity: employee2
+    expected_vlan: 20
+    attributes:
+      posture_status: non_compliant
+
+rf_profile:
+  max_channel_utilization_pct: 60
+  min_air_quality: 70
+  max_noise_dbm: -85
+  max_interference_pct: 30
+  coverage_hole_rssi_dbm: -75

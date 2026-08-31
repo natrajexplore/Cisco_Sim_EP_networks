@@ -1,0 +1,463 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-type:
+      - application/json;charset=utf-8
+      User-Agent:
+      - python-cisco-ise/3.1_Patch_1
+      authorization:
+      - REDACTED
+    method: GET
+    uri: https://devnetsandboxise.cisco.com/ers/config/networkdevice
+  response:
+    body:
+      string: "{\n  \"SearchResult\" : {\n    \"total\" : 2,\n    \"resources\" :
+        [ {\n      \"id\" : \"199770a0-6dfe-11ee-965b-6aa0f144a1be\",\n      \"name\"
+        : \"CSR1000v\",\n      \"description\" : \"\",\n      \"link\" : {\n        \"rel\"
+        : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/networkdevice/199770a0-6dfe-11ee-965b-6aa0f144a1be\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"dfe3b620-6dfd-11ee-965b-6aa0f144a1be\",\n      \"name\" : \"Cat8000\",\n
+        \     \"description\" : \"Catalyst 8000\",\n      \"link\" : {\n        \"rel\"
+        : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/networkdevice/dfe3b620-6dfd-11ee-965b-6aa0f144a1be\",\n
+        \       \"type\" : \"application/json\"\n      }\n    } ]\n  }\n}"
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Mon, 31 Aug 2026 10:42:54 GMT
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - ''
+      Set-Cookie:
+      - REDACTED
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      X-Content-Security-Policy:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-WebKit-CSP:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-type:
+      - application/json;charset=utf-8
+      User-Agent:
+      - python-cisco-ise/3.1_Patch_1
+      authorization:
+      - REDACTED
+      cookie:
+      - REDACTED
+    method: GET
+    uri: https://devnetsandboxise.cisco.com/ers/config/authorizationprofile
+  response:
+    body:
+      string: "{\n  \"SearchResult\" : {\n    \"total\" : 9,\n    \"resources\" :
+        [ {\n      \"id\" : \"984b81c0-8c01-11e6-996c-525400b48521\",\n      \"name\"
+        : \"Block_Wireless_Access\",\n      \"description\" : \"Default profile used
+        to block wireless devices. Ensure that you configure a NULL ROUTE ACL on the
+        Wireless LAN Controller\",\n      \"link\" : {\n        \"rel\" : \"self\",\n
+        \       \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/authorizationprofile/984b81c0-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"982ef910-8c01-11e6-996c-525400b48521\",\n      \"name\" : \"Cisco_IP_Phones\",\n
+        \     \"description\" : \"Default profile used for Cisco Phones.\",\n      \"link\"
+        : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/authorizationprofile/982ef910-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"2928e580-4fbe-11ed-a871-0050568f5811\",\n      \"name\" : \"Cisco_Temporal_Onboard\",\n
+        \     \"description\" : \"Onboard the device with Cisco temporal agent\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/authorizationprofile/2928e580-4fbe-11ed-a871-0050568f5811\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"9859b290-8c01-11e6-996c-525400b48521\",\n      \"name\" : \"Cisco_WebAuth\",\n
+        \     \"description\" : \"Default Profile used to redirect users to the CWA
+        portal.\",\n      \"link\" : {\n        \"rel\" : \"self\",\n        \"href\"
+        : \"https://devnetsandboxise.cisco.com/ers/config/authorizationprofile/9859b290-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"6ef23ff0-8bff-11e6-996c-525400b48521\",\n      \"name\" : \"DenyAccess\",\n
+        \     \"description\" : \"Default Profile with access type as Access-Reject\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/authorizationprofile/6ef23ff0-8bff-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"98630160-8c01-11e6-996c-525400b48521\",\n      \"name\" : \"NSP_Onboard\",\n
+        \     \"description\" : \"Onboard the device with Native Supplicant Provisioning\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/authorizationprofile/98630160-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"98408540-8c01-11e6-996c-525400b48521\",\n      \"name\" : \"Non_Cisco_IP_Phones\",\n
+        \     \"description\" : \"Default Profile used for Non Cisco Phones.\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/authorizationprofile/98408540-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"6eed36e0-8bff-11e6-996c-525400b48521\",\n      \"name\" : \"PermitAccess\",\n
+        \     \"description\" : \"Default Profile with access type as Access-Accept\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/authorizationprofile/6eed36e0-8bff-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"f3668e00-6da5-11ee-96ab-005056bfb032\",\n      \"name\" : \"UDN\",\n      \"description\"
+        : \"Default profile used for UDN.\",\n      \"link\" : {\n        \"rel\"
+        : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/authorizationprofile/f3668e00-6da5-11ee-96ab-005056bfb032\",\n
+        \       \"type\" : \"application/json\"\n      }\n    } ]\n  }\n}"
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Mon, 31 Aug 2026 10:42:57 GMT
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - ''
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      X-Content-Security-Policy:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-WebKit-CSP:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-type:
+      - application/json;charset=utf-8
+      User-Agent:
+      - python-cisco-ise/3.1_Patch_1
+      authorization:
+      - REDACTED
+      cookie:
+      - REDACTED
+    method: GET
+    uri: https://devnetsandboxise.cisco.com/ers/config/downloadableacl
+  response:
+    body:
+      string: "{\n  \"SearchResult\" : {\n    \"total\" : 4,\n    \"resources\" :
+        [ {\n      \"id\" : \"9825aa40-8c01-11e6-996c-525400b48521\",\n      \"name\"
+        : \"DENY_ALL_IPV4_TRAFFIC\",\n      \"description\" : \"Deny all ipv4 traffic\",\n
+        \     \"link\" : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/downloadableacl/9825aa40-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"410aa2b0-4fbe-11ed-a871-0050568f5811\",\n      \"name\" : \"DENY_ALL_IPV6_TRAFFIC\",\n
+        \     \"description\" : \"Deny all ipv6 traffic\",\n      \"link\" : {\n        \"rel\"
+        : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/downloadableacl/410aa2b0-4fbe-11ed-a871-0050568f5811\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"982498d0-8c01-11e6-996c-525400b48521\",\n      \"name\" : \"PERMIT_ALL_IPV4_TRAFFIC\",\n
+        \     \"description\" : \"Allow all ipv4 Traffic\",\n      \"link\" : {\n
+        \       \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/downloadableacl/982498d0-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"4108f500-4fbe-11ed-a871-0050568f5811\",\n      \"name\" : \"PERMIT_ALL_IPV6_TRAFFIC\",\n
+        \     \"description\" : \"Allow all ipv6 Traffic\",\n      \"link\" : {\n
+        \       \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/downloadableacl/4108f500-4fbe-11ed-a871-0050568f5811\",\n
+        \       \"type\" : \"application/json\"\n      }\n    } ]\n  }\n}"
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Mon, 31 Aug 2026 10:42:58 GMT
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - ''
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      X-Content-Security-Policy:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-WebKit-CSP:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-type:
+      - application/json;charset=utf-8
+      User-Agent:
+      - python-cisco-ise/3.1_Patch_1
+      authorization:
+      - REDACTED
+      cookie:
+      - REDACTED
+    method: GET
+    uri: https://devnetsandboxise.cisco.com/ers/config/sgt
+  response:
+    body:
+      string: "{\n  \"SearchResult\" : {\n    \"total\" : 16,\n    \"resources\" :
+        [ {\n      \"id\" : \"934557f0-8c01-11e6-996c-525400b48521\",\n      \"name\"
+        : \"Auditors\",\n      \"description\" : \"Auditor Security Group\",\n      \"link\"
+        : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/sgt/934557f0-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"935d4cc0-8c01-11e6-996c-525400b48521\",\n      \"name\" : \"BYOD\",\n      \"description\"
+        : \"BYOD Security Group\",\n      \"link\" : {\n        \"rel\" : \"self\",\n
+        \       \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/sgt/935d4cc0-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"9370d4c0-8c01-11e6-996c-525400b48521\",\n      \"name\" : \"Contractors\",\n
+        \     \"description\" : \"Contractor Security Group\",\n      \"link\" : {\n
+        \       \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/sgt/9370d4c0-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"93837260-8c01-11e6-996c-525400b48521\",\n      \"name\" : \"Developers\",\n
+        \     \"description\" : \"Developer Security Group\",\n      \"link\" : {\n
+        \       \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/sgt/93837260-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"9396d350-8c01-11e6-996c-525400b48521\",\n      \"name\" : \"Development_Servers\",\n
+        \     \"description\" : \"Development Servers Security Group\",\n      \"link\"
+        : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/sgt/9396d350-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"93ad6890-8c01-11e6-996c-525400b48521\",\n      \"name\" : \"Employees\",\n
+        \     \"description\" : \"Employee Security Group\",\n      \"link\" : {\n
+        \       \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/sgt/93ad6890-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"93c66ed0-8c01-11e6-996c-525400b48521\",\n      \"name\" : \"Guests\",\n
+        \     \"description\" : \"Guest Security Group\",\n      \"link\" : {\n        \"rel\"
+        : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/sgt/93c66ed0-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"93e1bf00-8c01-11e6-996c-525400b48521\",\n      \"name\" : \"Network_Services\",\n
+        \     \"description\" : \"Network Services Security Group\",\n      \"link\"
+        : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/sgt/93e1bf00-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"93f91790-8c01-11e6-996c-525400b48521\",\n      \"name\" : \"PCI_Servers\",\n
+        \     \"description\" : \"PCI Servers Security Group\",\n      \"link\" :
+        {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/sgt/93f91790-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"940facd0-8c01-11e6-996c-525400b48521\",\n      \"name\" : \"Point_of_Sale_Systems\",\n
+        \     \"description\" : \"Point of Sale Security Group\",\n      \"link\"
+        : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/sgt/940facd0-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"9423aa00-8c01-11e6-996c-525400b48521\",\n      \"name\" : \"Production_Servers\",\n
+        \     \"description\" : \"Production Servers Security Group\",\n      \"link\"
+        : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/sgt/9423aa00-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"9437a730-8c01-11e6-996c-525400b48521\",\n      \"name\" : \"Production_Users\",\n
+        \     \"description\" : \"Production User Security Group\",\n      \"link\"
+        : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/sgt/9437a730-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"944b2f30-8c01-11e6-996c-525400b48521\",\n      \"name\" : \"Quarantined_Systems\",\n
+        \     \"description\" : \"Quarantine Security Group\",\n      \"link\" : {\n
+        \       \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/sgt/944b2f30-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"94621290-8c01-11e6-996c-525400b48521\",\n      \"name\" : \"Test_Servers\",\n
+        \     \"description\" : \"Test Servers Security Group\",\n      \"link\" :
+        {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/sgt/94621290-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"947832a0-8c01-11e6-996c-525400b48521\",\n      \"name\" : \"TrustSec_Devices\",\n
+        \     \"description\" : \"TrustSec Devices Security Group\",\n      \"link\"
+        : {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/sgt/947832a0-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"92adf9f0-8c01-11e6-996c-525400b48521\",\n      \"name\" : \"Unknown\",\n
+        \     \"description\" : \"Unknown Security Group\",\n      \"link\" : {\n
+        \       \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/sgt/92adf9f0-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    } ]\n  }\n}"
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Mon, 31 Aug 2026 10:42:59 GMT
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - ''
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      X-Content-Security-Policy:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-WebKit-CSP:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-type:
+      - application/json;charset=utf-8
+      User-Agent:
+      - python-cisco-ise/3.1_Patch_1
+      authorization:
+      - REDACTED
+      cookie:
+      - REDACTED
+    method: GET
+    uri: https://devnetsandboxise.cisco.com/ers/config/identitygroup
+  response:
+    body:
+      string: "{\n  \"SearchResult\" : {\n    \"total\" : 8,\n    \"resources\" :
+        [ {\n      \"id\" : \"a176c430-8c01-11e6-996c-525400b48521\",\n      \"name\"
+        : \"ALL_ACCOUNTS (default)\",\n      \"description\" : \"Default ALL_ACCOUNTS
+        (default) User Group\",\n      \"link\" : {\n        \"rel\" : \"self\",\n
+        \       \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/identitygroup/a176c430-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"a1740510-8c01-11e6-996c-525400b48521\",\n      \"name\" : \"Employee\",\n
+        \     \"description\" : \"Default Employee User Group\",\n      \"link\" :
+        {\n        \"rel\" : \"self\",\n        \"href\" : \"https://devnetsandboxise.cisco.com/ers/config/identitygroup/a1740510-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"a1bb2030-8c01-11e6-996c-525400b48521\",\n      \"name\" : \"GROUP_ACCOUNTS
+        (default)\",\n      \"description\" : \"Default GROUP_ACCOUNTS (default) User
+        Group\",\n      \"link\" : {\n        \"rel\" : \"self\",\n        \"href\"
+        : \"https://devnetsandboxise.cisco.com/ers/config/identitygroup/a1bb2030-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"9f048bb0-8c01-11e6-996c-525400b48521\",\n      \"name\" : \"GuestType_Contractor
+        (default)\",\n      \"description\" : \"Identity group mirroring the guest
+        type \",\n      \"link\" : {\n        \"rel\" : \"self\",\n        \"href\"
+        : \"https://devnetsandboxise.cisco.com/ers/config/identitygroup/9f048bb0-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"9eee92b0-8c01-11e6-996c-525400b48521\",\n      \"name\" : \"GuestType_Daily
+        (default)\",\n      \"description\" : \"Identity group mirroring the guest
+        type \",\n      \"link\" : {\n        \"rel\" : \"self\",\n        \"href\"
+        : \"https://devnetsandboxise.cisco.com/ers/config/identitygroup/9eee92b0-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"359a5240-4fbe-11ed-a871-0050568f5811\",\n      \"name\" : \"GuestType_SocialLogin
+        (default)\",\n      \"description\" : \"Identity group mirroring the guest
+        type \",\n      \"link\" : {\n        \"rel\" : \"self\",\n        \"href\"
+        : \"https://devnetsandboxise.cisco.com/ers/config/identitygroup/359a5240-4fbe-11ed-a871-0050568f5811\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"9efe2310-8c01-11e6-996c-525400b48521\",\n      \"name\" : \"GuestType_Weekly
+        (default)\",\n      \"description\" : \"Identity group mirroring the guest
+        type \",\n      \"link\" : {\n        \"rel\" : \"self\",\n        \"href\"
+        : \"https://devnetsandboxise.cisco.com/ers/config/identitygroup/9efe2310-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    }, {\n      \"id\" :
+        \"a19d5f00-8c01-11e6-996c-525400b48521\",\n      \"name\" : \"OWN_ACCOUNTS
+        (default)\",\n      \"description\" : \"Default OWN_ACCOUNTS (default) User
+        Group\",\n      \"link\" : {\n        \"rel\" : \"self\",\n        \"href\"
+        : \"https://devnetsandboxise.cisco.com/ers/config/identitygroup/a19d5f00-8c01-11e6-996c-525400b48521\",\n
+        \       \"type\" : \"application/json\"\n      }\n    } ]\n  }\n}"
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Mon, 31 Aug 2026 10:43:00 GMT
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - ''
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      X-Content-Security-Policy:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-WebKit-CSP:
+      - default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; img-src 'self' data:;
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+version: 1

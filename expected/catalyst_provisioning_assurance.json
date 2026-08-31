@@ -1,0 +1,161 @@
+{
+  "counts": {
+    "fail": 0,
+    "info": 1,
+    "pass": 4,
+    "warn": 2
+  },
+  "ended": "2026-08-31T10:46:53+00:00",
+  "mode": "replay",
+  "name": "catalyst_provisioning_assurance",
+  "ok": true,
+  "started": "2026-08-31T10:46:52+00:00",
+  "steps": [
+    {
+      "data": {
+        "sites": [
+          "Bhagalpur",
+          "Bihar",
+          "DCC Aishwariya",
+          "EU",
+          "Floor 8",
+          "Global",
+          "HU",
+          "HU_B01",
+          "Hungary",
+          "NL",
+          "Navi Mumbai",
+          "SRM",
+          "TNB college",
+          "TP-2",
+          "Tamil Nadu",
+          "TamilNadu",
+          "UB Building",
+          "VIR",
+          "chengallpattu",
+          "chennai",
+          "potheri",
+          "potheri",
+          "tp-2",
+          "tp-2",
+          "tp1"
+        ]
+      },
+      "name": "Read site hierarchy",
+      "notes": [],
+      "request": "GET /dna/intent/api/v1/site",
+      "summary": "25 site(s) in Catalyst Center",
+      "verdict": "pass"
+    },
+    {
+      "data": {
+        "devices": [
+          {
+            "hostname": "sw1",
+            "platformId": "C9KV-UADP-8P",
+            "reachabilityStatus": "Reachable",
+            "role": "ACCESS",
+            "softwareVersion": "17.12.1prd9"
+          },
+          {
+            "hostname": "sw2",
+            "platformId": "C9KV-UADP-8P",
+            "reachabilityStatus": "Reachable",
+            "role": "ACCESS",
+            "softwareVersion": "17.12.1prd9"
+          },
+          {
+            "hostname": "sw3",
+            "platformId": "C9KV-UADP-8P",
+            "reachabilityStatus": "Reachable",
+            "role": "ACCESS",
+            "softwareVersion": "17.12.1prd9"
+          },
+          {
+            "hostname": "sw4",
+            "platformId": "C9KV-UADP-8P",
+            "reachabilityStatus": "Reachable",
+            "role": "ACCESS",
+            "softwareVersion": "17.12.1prd9"
+          }
+        ]
+      },
+      "name": "Read device inventory",
+      "notes": [],
+      "request": "GET /dna/intent/api/v1/network-device",
+      "summary": "4 device(s), 4 reachable",
+      "verdict": "pass"
+    },
+    {
+      "data": {
+        "hostnames_in_sandbox": [
+          "sw1",
+          "sw2",
+          "sw3",
+          "sw4"
+        ]
+      },
+      "name": "Topology inventory vs Catalyst Center",
+      "notes": [
+        "topology platforms: ['C9130AXI', 'C9300-48P', 'C9400', 'C9500-40X', 'C9800-40', 'DN2-HW-APL', 'SNS-3615']",
+        "matched: []"
+      ],
+      "request": "",
+      "summary": "0 platform family match(es) between topology and sandbox",
+      "verdict": "info"
+    },
+    {
+      "data": {
+        "images": []
+      },
+      "name": "SWIM: software image repository",
+      "notes": [],
+      "request": "GET /dna/intent/api/v1/image/importation",
+      "summary": "0 image(s), 0 tagged golden",
+      "verdict": "warn"
+    },
+    {
+      "data": {
+        "network_health": [
+          {
+            "badCount": 0,
+            "entity": null,
+            "fairCount": 0,
+            "goodCount": 4,
+            "healthScore": 100,
+            "maintenanceModeCount": 0,
+            "noHealthCount": 0,
+            "time": "2026-08-31T10:35:00.000+0000",
+            "timeinMillis": 1788172500000,
+            "totalCount": 4
+          }
+        ]
+      },
+      "name": "Assurance: overall network health",
+      "notes": [],
+      "request": "GET /dna/intent/api/v1/network-health",
+      "summary": "network health score: 100",
+      "verdict": "pass"
+    },
+    {
+      "data": null,
+      "name": "Assurance: client health",
+      "notes": [],
+      "request": "",
+      "summary": "not available: 400 Client Error: Bad Request for url: https://sandboxdnac.cisco.com/dna/intent/api/v1/client-health?timestamp=1788173100000",
+      "verdict": "warn"
+    },
+    {
+      "data": {
+        "issues": []
+      },
+      "name": "Assurance: open issues",
+      "notes": [],
+      "request": "GET /dna/intent/api/v1/issues",
+      "summary": "0 open issue(s), 0 P1",
+      "verdict": "pass"
+    }
+  ],
+  "title": "Catalyst Center provisioning + assurance",
+  "topology": "campus-small"
+}
