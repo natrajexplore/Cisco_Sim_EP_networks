@@ -1,5 +1,11 @@
 # netsim lab
 
+![Python](https://img.shields.io/badge/python-3.10%2B-blue?logo=python&logoColor=white)
+![tests](https://img.shields.io/badge/tests-33%20passing-brightgreen)
+![scenarios](https://img.shields.io/badge/scenarios-6-2a9d8f)
+![mode](https://img.shields.io/badge/offline-replay%20%7C%20record%20%7C%20live-informational)
+![Cisco DevNet](https://img.shields.io/badge/Cisco%20DevNet-always--on%20sandboxes-1BA0D7?logo=cisco&logoColor=white)
+
 A **lightweight** framework for exploring enterprise network architecture and
 simulating real-world **Cisco ISE / NAC, wireless and Catalyst Center** scenarios
 — without Cisco Modeling Labs, without controller VMs, on a laptop with **8 GB RAM**.
