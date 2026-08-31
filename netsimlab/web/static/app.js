@@ -9,27 +9,114 @@ const NODE_COLOR = {
 
 async function loadEnv() {
   const s = await (await fetch("/api/settings")).json();
-  $("#env").textContent = `mode=${s.mode} · dnac=${s.dnac_base_url} · ise=${s.ise_base_url}`;
+  $("#env").textContent =
+    `mode=${s.mode} · dnac=${s.dnac_base_url} · ise=${s.ise_base_url}` +
+    (s.wlc_enabled ? ` · wlc=${s.wlc_base_url}` : "");
   $("#mode").value = s.mode;
+}
+
+let GRAPH = { nodes: [], edges: [] };
+
+function nodeById(id) { return GRAPH.nodes.find((n) => n.id === id); }
+
+// every link touching `id`, as { neighbor, localPort, remotePort, kind, vlan, auth }
+function connectionsOf(id) {
+  const out = [];
+  for (const e of GRAPH.edges) {
+    if (e.from !== id && e.to !== id) continue;
+    const neighbor = e.from === id ? e.to : e.from;
+    const ports = e.ports || {};
+    out.push({
+      neighbor,
+      localPort: ports[id] || null,
+      remotePort: ports[neighbor] || null,
+      kind: e.kind || "link",
+      vlan: e.access_vlan || null,
+      auth: e.auth_method || null,
+    });
+  }
+  return out.sort((a, b) => (a.localPort || "z").localeCompare(b.localPort || "z"));
+}
+
+function describeNode(n) {
+  const bits = [];
+  if (n.role) bits.push(n.role);
+  if (n.platform && n.platform !== "unknown") bits.push(n.platform);
+  if (n.mgmt_ip) bits.push("mgmt " + n.mgmt_ip);
+  if (n.site) bits.push(n.site);
+  if (n.mac) bits.push(n.mac);
+  if (n.security) bits.push(n.security);
+  return bits.join("  ·  ");
+}
+
+function renderHover(html) { $("#hoverinfo").innerHTML = html; }
+
+function hoverNodeInfo(id) {
+  const n = nodeById(id);
+  if (!n) return;
+  const rows = connectionsOf(id).map((c) => {
+    const lp = c.localPort ? `<b>${c.localPort}</b>` : "<i>—</i>";
+    const rp = c.remotePort ? ` <span class="muted">[${c.remotePort}]</span>` : "";
+    const tags = [c.kind, c.vlan ? "vlan " + c.vlan : null, c.auth].filter(Boolean).join(", ");
+    return `<tr><td>${lp}</td><td>→ ${c.neighbor}${rp}</td><td class="muted">${tags}</td></tr>`;
+  }).join("");
+  renderHover(
+    `<div class="hi-head">${n.id} <span class="muted">${describeNode(n)}</span></div>` +
+    (rows ? `<table class="hi-table"><tbody>${rows}</tbody></table>`
+          : `<span class="muted">no links</span>`)
+  );
+}
+
+function hoverEdgeInfo(edge) {
+  const ports = edge.ports || {};
+  const a = `${edge.from}${ports[edge.from] ? " <b>" + ports[edge.from] + "</b>" : ""}`;
+  const b = `${edge.to}${ports[edge.to] ? " <b>" + ports[edge.to] + "</b>" : ""}`;
+  const tags = [edge.kind, edge.access_vlan ? "vlan " + edge.access_vlan : null, edge.auth_method]
+    .filter(Boolean).join(", ");
+  renderHover(`<div class="hi-head">${a} &nbsp;⟷&nbsp; ${b}</div><span class="muted">${tags}</span>`);
 }
 
 async function loadTopology() {
   const t = await (await fetch("/api/topology")).json();
+  GRAPH = t.graph;
   $("#topo-name").textContent = t.graph.name;
+  const fg = getComputedStyle(document.body).color;
+
   const nodes = t.graph.nodes.map((n) => ({
     id: n.id,
     label: n.id,
     group: n.role || n.kind,
     shape: n.kind === "endpoint" ? "box" : n.kind === "ssid" ? "hexagon" : "dot",
     color: NODE_COLOR[n.role] || NODE_COLOR[n.kind] || "#888",
-    font: { color: getComputedStyle(document.body).color },
+    font: { color: fg },
+    title: `${n.id} — ${describeNode(n) || n.kind}`,
   }));
-  const edges = t.graph.edges.map((e) => ({ from: e.from, to: e.to, label: e.kind || "", font: { size: 9 } }));
-  new vis.Network($("#graph"), { nodes, edges }, {
+  const edgeData = t.graph.edges.map((e, i) => ({
+    id: "e" + i, from: e.from, to: e.to, label: e.kind || "", font: { size: 9 },
+    _raw: e,
+    title: [e.ports && e.ports[e.from], "⟷", e.ports && e.ports[e.to]].filter(Boolean).join(" ") ||
+           (e.kind || "link"),
+  }));
+
+  const net = new vis.Network($("#graph"), { nodes, edges: edgeData }, {
     physics: { stabilization: true, barnesHut: { springLength: 130 } },
     edges: { color: { color: "#99a", opacity: 0.6 }, smooth: false },
     nodes: { size: 14 },
+    interaction: { hover: true, tooltipDelay: 120 },
   });
+  net.on("hoverNode", (p) => hoverNodeInfo(p.node));
+  net.on("hoverEdge", (p) => {
+    const ed = edgeData.find((x) => x.id === p.edge);
+    if (ed) hoverEdgeInfo(ed._raw);
+  });
+  net.on("click", (p) => {
+    if (p.nodes.length) hoverNodeInfo(p.nodes[0]);
+    else if (p.edges.length) {
+      const ed = edgeData.find((x) => x.id === p.edges[0]);
+      if (ed) hoverEdgeInfo(ed._raw);
+    }
+  });
+
   const v = t.validation;
   $("#validation").innerHTML =
     (v.ok ? "✓ topology valid" : `<span class="err">✗ ${v.errors.length} error(s)</span>`) +

@@ -91,3 +91,21 @@ class CatalystCenterConnector(Connector):
 
     def wireless_ssids(self) -> Any:
         return self._get("/dna/intent/api/v1/wireless/profile")
+
+    # --- switch / port config -------------------------------------------
+    def device_running_config(self, device_id: str) -> Any:
+        return self._get(f"/dna/intent/api/v1/network-device/{device_id}/config")
+
+    def device_interfaces(self, device_id: str) -> Any:
+        return self._get(f"/dna/intent/api/v1/interface/network-device/{device_id}")
+
+    def first_switch_id(self) -> str | None:
+        """Device id of the first access/distribution switch in the inventory."""
+        from netsimlab.apiutil import dnac_response
+
+        for d in dnac_response(self.devices()) or []:
+            fam = str(d.get("family", "")).lower()
+            role = str(d.get("role", "")).lower()
+            if "switch" in fam or role in {"access", "distribution"}:
+                return d.get("id")
+        return None

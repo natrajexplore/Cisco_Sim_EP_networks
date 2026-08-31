@@ -18,6 +18,7 @@ CLI ~120 MB RAM   ·   dashboard ~200 MB   ·   no Docker   ·   no GPU
 | Scenario | Real-world mapping | Talks to |
 |---|---|---|
 | `wired_dot1x_mab` | Employee 802.1X + printer MAB: policy sets, authz profiles, dACLs, VLAN, SGT | ISE |
+| `access_port_nac_validation` | Switchport config for NAC: host-mode, 802.1X/MAB, closed/open, CoA, dACL, periodic re-auth; AP ports: PoE, trunk, QoS trust | topology intent (+ Catalyst Center config cross-check) |
 | `guest_wireless_onboarding` | Self-registered guest portal → CoA → internet-only access | ISE + Catalyst Center |
 | `endpoint_profiling_posture` | Device profiling (device sensor) + posture compliance / quarantine | ISE |
 | `catalyst_provisioning_assurance` | Site hierarchy, inventory, SWIM, network/client health, issues | Catalyst Center |
@@ -84,8 +85,14 @@ netsim serve                                      # dashboard at http://127.0.0.
 ## Topology
 
 Topologies are plain YAML (`topologies/campus-small.yaml`) — sites, devices,
-SSIDs, endpoints and the **intended** NAC / RF policy. `netsim topology validate`
+SSIDs, endpoints, the **intended** NAC / RF policy, and `access_ports:` (the
+intended switchport config; NAC ports are auto-derived from endpoints, AP/uplink
+ports from links with `a_port` / `b_port` names). `netsim topology validate`
 checks structural integrity; scenarios compare the sandbox against this intent.
+
+The dashboard topology graph is interactive — hover (or click) a device, link or
+endpoint to see its connected port IDs, the neighbor on the other end and that
+neighbor's port, plus link kind / VLAN / auth method.
 
 ## Layout
 
@@ -94,8 +101,9 @@ netsimlab/
   topology/      models + loader + graph validation + mermaid/json export
   connectors/    dnacentersdk / ciscoisesdk / Catalyst 9800 RESTCONF wrappers
                  with record/replay (vcrpy)
-  scenarios/     the 5 scenarios + registry
+  scenarios/     the 6 scenarios + registry
   nac_eval.py    local policy evaluator (no RADIUS server needed)
+  port_eval.py   local switchport (NAC / AP / uplink) config checker
   expect/        deepdiff comparison to golden snapshots
   runner.py      execute + persist + compare
   report/        HTML report

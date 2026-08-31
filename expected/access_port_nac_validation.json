@@ -1,0 +1,330 @@
+{
+  "counts": {
+    "fail": 0,
+    "info": 1,
+    "pass": 6,
+    "warn": 3
+  },
+  "ended": "2026-08-31T12:19:07+00:00",
+  "mode": "replay",
+  "name": "access_port_nac_validation",
+  "ok": true,
+  "started": "2026-08-31T12:19:06+00:00",
+  "steps": [
+    {
+      "data": {
+        "ports": [
+          "access-1 GigabitEthernet1/0/10 (nac)",
+          "access-1 GigabitEthernet1/0/20 (nac)",
+          "access-1 GigabitEthernet1/0/48 (ap)",
+          "access-1 TenGigabitEthernet1/1/1 (uplink)",
+          "access-2 GigabitEthernet1/0/48 (ap)",
+          "access-2 GigabitEthernet1/0/5 (nac)",
+          "access-2 TenGigabitEthernet1/1/1 (uplink)"
+        ]
+      },
+      "name": "Enumerate access-layer ports (topology intent)",
+      "notes": [],
+      "request": "",
+      "summary": "7 port(s): 3 NAC, 2 AP, 2 uplink",
+      "verdict": "pass"
+    },
+    {
+      "data": {
+        "findings": [],
+        "port": {
+          "coa": true,
+          "dacl": true,
+          "data_vlan": 20,
+          "host_mode": "multi-auth",
+          "interface": "GigabitEthernet1/0/10",
+          "methods": [
+            "dot1x",
+            "mab"
+          ],
+          "mode": "closed",
+          "order": "dot1x-first",
+          "poe": true,
+          "purpose": "nac",
+          "qos_trust": "dscp",
+          "reauth": true,
+          "switch": "access-1",
+          "trunk": false,
+          "trunk_allowed_vlans": [],
+          "voice_vlan": null
+        }
+      },
+      "name": "NAC port: access-1 GigabitEthernet1/0/10 -> emp-laptop-1",
+      "notes": [
+        "no issues"
+      ],
+      "request": "mode=closed host-mode=multi-auth methods=dot1x+mab order=dot1x-first reauth=True coa=True dacl=True",
+      "summary": "config matches best practice",
+      "verdict": "pass"
+    },
+    {
+      "data": {
+        "findings": [
+          {
+            "code": "open-mode",
+            "message": "open authentication: all traffic passes before/without auth - use 'closed' or 'low-impact'",
+            "severity": "warn"
+          },
+          {
+            "code": "multi-host",
+            "message": "multi-host authorises the port after the first success - prefer multi-auth so every MAC is authenticated",
+            "severity": "warn"
+          },
+          {
+            "code": "no-reauth",
+            "message": "no periodic re-authentication - stale sessions persist across policy changes",
+            "severity": "warn"
+          },
+          {
+            "code": "no-dacl",
+            "message": "downloadable ACLs not supported on the port (needs IP device tracking / 'ip access-list' pre-auth) - dynamic ACL policy will not apply",
+            "severity": "warn"
+          },
+          {
+            "code": "mab-only",
+            "message": "MAB only: no 802.1X - acceptable for fixed IoT, weak for user ports",
+            "severity": "info"
+          },
+          {
+            "code": "mab-first",
+            "message": "MAB precedes 802.1X - only intended for IoT-dense ports; a rogue MAC authorises before the supplicant is tried",
+            "severity": "info"
+          }
+        ],
+        "port": {
+          "coa": true,
+          "dacl": false,
+          "data_vlan": 30,
+          "host_mode": "multi-host",
+          "interface": "GigabitEthernet1/0/20",
+          "methods": [
+            "mab"
+          ],
+          "mode": "open",
+          "order": "mab-first",
+          "poe": true,
+          "purpose": "nac",
+          "qos_trust": "dscp",
+          "reauth": false,
+          "switch": "access-1",
+          "trunk": false,
+          "trunk_allowed_vlans": [],
+          "voice_vlan": null
+        }
+      },
+      "name": "NAC port: access-1 GigabitEthernet1/0/20 -> floor1-printer",
+      "notes": [
+        "[WARN] open-mode: open authentication: all traffic passes before/without auth - use 'closed' or 'low-impact'",
+        "[WARN] multi-host: multi-host authorises the port after the first success - prefer multi-auth so every MAC is authenticated",
+        "[WARN] no-reauth: no periodic re-authentication - stale sessions persist across policy changes",
+        "[WARN] no-dacl: downloadable ACLs not supported on the port (needs IP device tracking / 'ip access-list' pre-auth) - dynamic ACL policy will not apply",
+        "[INFO] mab-only: MAB only: no 802.1X - acceptable for fixed IoT, weak for user ports",
+        "[INFO] mab-first: MAB precedes 802.1X - only intended for IoT-dense ports; a rogue MAC authorises before the supplicant is tried"
+      ],
+      "request": "mode=open host-mode=multi-host methods=mab order=mab-first reauth=False coa=True dacl=False",
+      "summary": "6 finding(s)",
+      "verdict": "warn"
+    },
+    {
+      "data": {
+        "findings": [],
+        "port": {
+          "coa": true,
+          "dacl": true,
+          "data_vlan": null,
+          "host_mode": "multi-auth",
+          "interface": "GigabitEthernet1/0/48",
+          "methods": [],
+          "mode": "closed",
+          "order": "dot1x-first",
+          "poe": true,
+          "purpose": "ap",
+          "qos_trust": "dscp",
+          "reauth": true,
+          "switch": "access-1",
+          "trunk": true,
+          "trunk_allowed_vlans": [
+            10,
+            100
+          ],
+          "voice_vlan": null
+        }
+      },
+      "name": "AP port: access-1 GigabitEthernet1/0/48",
+      "notes": [
+        "no issues"
+      ],
+      "request": "trunk poe=on qos-trust=dscp vlans=[10, 100]",
+      "summary": "config matches best practice",
+      "verdict": "pass"
+    },
+    {
+      "data": {
+        "findings": [],
+        "port": {
+          "coa": false,
+          "dacl": false,
+          "data_vlan": null,
+          "host_mode": "multi-auth",
+          "interface": "TenGigabitEthernet1/1/1",
+          "methods": [],
+          "mode": "closed",
+          "order": "dot1x-first",
+          "poe": false,
+          "purpose": "uplink",
+          "qos_trust": "dscp",
+          "reauth": false,
+          "switch": "access-1",
+          "trunk": true,
+          "trunk_allowed_vlans": [],
+          "voice_vlan": null
+        }
+      },
+      "name": "uplink: access-1 TenGigabitEthernet1/1/1",
+      "notes": [
+        "no issues"
+      ],
+      "request": "trunk infrastructure uplink",
+      "summary": "config matches best practice",
+      "verdict": "pass"
+    },
+    {
+      "data": {
+        "findings": [
+          {
+            "code": "no-poe",
+            "message": "PoE disabled on an AP port - the AP will not power up unless externally powered",
+            "severity": "warn"
+          },
+          {
+            "code": "no-qos-trust",
+            "message": "no QoS trust: the AP's CoS/DSCP markings (voice, video) are rewritten to 0 at ingress",
+            "severity": "warn"
+          }
+        ],
+        "port": {
+          "coa": true,
+          "dacl": true,
+          "data_vlan": null,
+          "host_mode": "multi-auth",
+          "interface": "GigabitEthernet1/0/48",
+          "methods": [],
+          "mode": "closed",
+          "order": "dot1x-first",
+          "poe": false,
+          "purpose": "ap",
+          "qos_trust": "none",
+          "reauth": true,
+          "switch": "access-2",
+          "trunk": true,
+          "trunk_allowed_vlans": [
+            10,
+            100
+          ],
+          "voice_vlan": null
+        }
+      },
+      "name": "AP port: access-2 GigabitEthernet1/0/48",
+      "notes": [
+        "[WARN] no-poe: PoE disabled on an AP port - the AP will not power up unless externally powered",
+        "[WARN] no-qos-trust: no QoS trust: the AP's CoS/DSCP markings (voice, video) are rewritten to 0 at ingress"
+      ],
+      "request": "trunk poe=off qos-trust=none vlans=[10, 100]",
+      "summary": "2 finding(s)",
+      "verdict": "warn"
+    },
+    {
+      "data": {
+        "findings": [],
+        "port": {
+          "coa": true,
+          "dacl": true,
+          "data_vlan": 40,
+          "host_mode": "multi-domain",
+          "interface": "GigabitEthernet1/0/5",
+          "methods": [
+            "dot1x",
+            "mab"
+          ],
+          "mode": "closed",
+          "order": "dot1x-first",
+          "poe": true,
+          "purpose": "nac",
+          "qos_trust": "dscp",
+          "reauth": true,
+          "switch": "access-2",
+          "trunk": false,
+          "trunk_allowed_vlans": [],
+          "voice_vlan": 40
+        }
+      },
+      "name": "NAC port: access-2 GigabitEthernet1/0/5 -> lobby-ipphone",
+      "notes": [
+        "no issues"
+      ],
+      "request": "mode=closed host-mode=multi-domain methods=dot1x+mab order=dot1x-first reauth=True coa=True dacl=True voice-vlan=40",
+      "summary": "config matches best practice",
+      "verdict": "pass"
+    },
+    {
+      "data": {
+        "findings": [],
+        "port": {
+          "coa": false,
+          "dacl": false,
+          "data_vlan": null,
+          "host_mode": "multi-auth",
+          "interface": "TenGigabitEthernet1/1/1",
+          "methods": [],
+          "mode": "closed",
+          "order": "dot1x-first",
+          "poe": false,
+          "purpose": "uplink",
+          "qos_trust": "dscp",
+          "reauth": false,
+          "switch": "access-2",
+          "trunk": true,
+          "trunk_allowed_vlans": [],
+          "voice_vlan": null
+        }
+      },
+      "name": "uplink: access-2 TenGigabitEthernet1/1/1",
+      "notes": [
+        "no issues"
+      ],
+      "request": "trunk infrastructure uplink",
+      "summary": "config matches best practice",
+      "verdict": "pass"
+    },
+    {
+      "data": {
+        "nac_interface_count": 0,
+        "sample_parsed": {},
+        "switch_id": "aa754801-8895-41e8-8ca5-27ee415c9c42"
+      },
+      "name": "Cross-check against Catalyst Center switch running-config",
+      "notes": [],
+      "request": "GET /dna/intent/api/v1/network-device/aa754801-8895-41e8-8ca5-27ee415c9c42/config",
+      "summary": "pulled 358-line running-config; this device has no 802.1X/MAB interfaces - intent checks above stand alone",
+      "verdict": "info"
+    },
+    {
+      "data": null,
+      "name": "Access-port validation summary",
+      "notes": [
+        "Critical = ISE enforcement will not work as intended on that port.",
+        "Warning = weaker security posture or operational risk."
+      ],
+      "request": "",
+      "summary": "0 critical, 6 warning(s) across 7 port(s)",
+      "verdict": "warn"
+    }
+  ],
+  "title": "Access port NAC + AP port configuration",
+  "topology": "campus-small"
+}

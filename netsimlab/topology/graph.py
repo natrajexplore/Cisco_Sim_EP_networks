@@ -27,6 +27,7 @@ def build_graph(topo: Topology) -> nx.Graph:
             kind="device",
             role=d.role,
             platform=d.platform,
+            mgmt_ip=d.mgmt_ip,
             site=d.site.path() if d.site else None,
         )
     for s in topo.ssids:
@@ -35,12 +36,20 @@ def build_graph(topo: Topology) -> nx.Graph:
         g.add_node(e.name, kind="endpoint", mac=e.mac, device_type=e.kind)
 
     for link in topo.links:
-        g.add_edge(link.a, link.b, kind=link.kind, access_vlan=link.access_vlan)
+        ports = {k: v for k, v in ((link.a, link.a_port), (link.b, link.b_port)) if v}
+        g.add_edge(
+            link.a, link.b, kind=link.kind, access_vlan=link.access_vlan,
+            ports=ports or None,
+        )
     for ap in topo.devices_by_role("ap"):
         if ap.wlc:
             g.add_edge(ap.name, ap.wlc, kind="capwap")
     for e in topo.endpoints:
-        g.add_edge(e.name, e.connects_to, kind="endpoint", port=e.port)
+        g.add_edge(
+            e.name, e.connects_to, kind="endpoint",
+            ports={e.connects_to: e.port} if e.port else None,
+            auth_method=e.auth_method,
+        )
 
     # keep the graph coherent: SSIDs ride the WLC(s); controllers hang off the
     # first core/distribution device.
@@ -82,6 +91,14 @@ def validate(topo: Topology) -> ValidationReport:
             r.errors.append(f"SSID {s.name!r} references unknown policy {s.policy!r}")
         if s.auth_method == "guest" and not s.portal:
             r.warnings.append(f"guest SSID {s.name!r} has no 'portal' set")
+
+    for p in topo.access_ports:
+        if p.switch not in names:
+            r.errors.append(f"access_port references unknown switch {p.switch!r}")
+        elif topo.device(p.switch).role not in {"access", "distribution"}:
+            r.warnings.append(
+                f"access_port {p.switch}/{p.interface} is on a {topo.device(p.switch).role!r} device"
+            )
 
     for e in topo.endpoints:
         target = e.connects_to

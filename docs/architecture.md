@@ -67,6 +67,16 @@
   (authz profiles, dACLs, SGTs, portals) are still fetched from the sandbox to
   prove connectivity and shape.
 
+* **Local switchport evaluation (`port_eval.py`).** `access_port_nac_validation`
+  scores each `AccessPort` (explicit, or derived from endpoints / AP links)
+  against Cisco NAC + AP-port best practice — host-mode, closed vs open,
+  802.1X/MAB, CoA, dACL, periodic re-auth for NAC ports; PoE, trunk, QoS trust
+  for AP ports. When Catalyst Center is reachable it also pulls a real switch
+  running-config and parses its interface stanzas (`apiutil.interface_block` /
+  `nac_config_flags`) as a cross-check; the parse step degrades to `info` when
+  the sandbox has no NAC-configured switch, so the intent checks stay
+  deterministic offline.
+
 * **Golden snapshots = "expected real-world output".** `netsim snapshot save`
   stores a full ScenarioResult captured from the live sandbox. Later runs
   `deepdiff` against it with ignore rules for UUIDs / timestamps / health scores,

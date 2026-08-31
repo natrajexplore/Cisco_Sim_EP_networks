@@ -55,12 +55,12 @@ devices:
     site: { area: Global, building: HQ, floor: Floor-2 }
 
 links:
-  - { a: core-1, b: dist-1, kind: fiber }
-  - { a: dist-1, b: access-1, kind: fiber }
-  - { a: dist-1, b: access-2, kind: fiber }
-  - { a: dist-1, b: wlc-1, kind: trunk }
-  - { a: access-1, b: ap-floor1-a, kind: trunk, access_vlan: 100 }
-  - { a: access-2, b: ap-floor2-a, kind: trunk, access_vlan: 100 }
+  - { a: core-1, b: dist-1, kind: fiber, a_port: TenGigabitEthernet1/0/1, b_port: TenGigabitEthernet1/1/1 }
+  - { a: dist-1, b: access-1, kind: fiber, a_port: TenGigabitEthernet1/1/2, b_port: TenGigabitEthernet1/1/1 }
+  - { a: dist-1, b: access-2, kind: fiber, a_port: TenGigabitEthernet1/1/3, b_port: TenGigabitEthernet1/1/1 }
+  - { a: dist-1, b: wlc-1, kind: trunk, a_port: TenGigabitEthernet1/1/4, b_port: TenGigabitEthernet0/0/1 }
+  - { a: access-1, b: ap-floor1-a, kind: trunk, access_vlan: 100, a_port: GigabitEthernet1/0/48 }
+  - { a: access-2, b: ap-floor2-a, kind: trunk, access_vlan: 100, a_port: GigabitEthernet1/0/48 }
 
 policies:
   - name: Employee-Wired-Dot1x
@@ -170,3 +170,55 @@ rf_profile:
   max_noise_dbm: -85
   max_interference_pct: 30
   coverage_hole_rssi_dbm: -75
+
+# Switchport intent. NAC ports for endpoints with a 'port' set are auto-derived;
+# AP and uplink ports are auto-derived from links with port names. List a port
+# here to override the derived defaults (e.g. a deliberately relaxed port).
+access_ports:
+  - switch: access-1
+    interface: GigabitEthernet1/0/10   # employee laptop - fully locked down
+    purpose: nac
+    mode: closed
+    host_mode: multi-auth
+    methods: [dot1x, mab]
+    order: dot1x-first
+    reauth: true
+    coa: true
+    dacl: true
+    data_vlan: 20
+  - switch: access-1
+    interface: GigabitEthernet1/0/20   # printer - relaxed, flagged by the scenario
+    purpose: nac
+    mode: open
+    host_mode: multi-host
+    methods: [mab]
+    order: mab-first
+    reauth: false
+    coa: true
+    dacl: false
+    data_vlan: 30
+  - switch: access-2
+    interface: GigabitEthernet1/0/5    # IP phone + PC behind it
+    purpose: nac
+    mode: closed
+    host_mode: multi-domain
+    methods: [dot1x, mab]
+    reauth: true
+    coa: true
+    dacl: true
+    data_vlan: 40
+    voice_vlan: 40
+  - switch: access-1
+    interface: GigabitEthernet1/0/48   # AP uplink
+    purpose: ap
+    trunk: true
+    trunk_allowed_vlans: [10, 100]
+    poe: true
+    qos_trust: dscp
+  - switch: access-2
+    interface: GigabitEthernet1/0/48   # AP uplink - PoE budget exhausted, flagged
+    purpose: ap
+    trunk: true
+    trunk_allowed_vlans: [10, 100]
+    poe: false
+    qos_trust: none

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from netsimlab.scenarios.access_port_nac import AccessPortNacValidation
 from netsimlab.scenarios.base import Scenario
 from netsimlab.scenarios.catalyst_provisioning import CatalystProvisioning
 from netsimlab.scenarios.guest_wireless import GuestWireless
@@ -11,6 +12,7 @@ from netsimlab.scenarios.wireless_rf import WirelessRf
 
 _SCENARIOS: list[type[Scenario]] = [
     WiredDot1xMab,
+    AccessPortNacValidation,
     GuestWireless,
     ProfilingPosture,
     CatalystProvisioning,

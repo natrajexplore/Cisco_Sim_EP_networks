@@ -1,0 +1,296 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      User-Agent:
+      - python-requests/2.34.2
+      authorization:
+      - REDACTED
+    method: POST
+    uri: https://sandboxdnac.cisco.com/dna/system/api/v1/auth/token
+  response:
+    body:
+      string: "{\n \"Token\": \"REDACTED\",\n \"message\": \"\"\n}"
+    headers:
+      Access-Control-Allow-Methods:
+      - HEAD,GET,PUT,POST,DELETE,PATCH
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '900'
+      Content-Security-Policy:
+      - 'default-src ''self'' http: https: data: blob: ''unsafe-inline'' ''unsafe-eval'';
+        base-uri ''self''; frame-ancestors ''self''; block-all-mixed-content'
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 31 Aug 2026 12:16:28 GMT
+      Server:
+      - webserver
+      Via:
+      - api-gateway,upstream
+      X-Content-Type-Options:
+      - nosniff
+      X-Correlation-Id:
+      - 400f84bd-40a9-4da4-ab4a-51a147c178d1
+      X-Frame-Options:
+      - Deny
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-type:
+      - application/json;charset=utf-8
+      User-Agent:
+      - python-cisco-dnacsdk/2.3.7.6
+      x-auth-token:
+      - REDACTED
+    method: GET
+    uri: https://sandboxdnac.cisco.com/dna/intent/api/v1/network-device
+  response:
+    body:
+      string: '{"response":[{"memorySize":"NA","family":"Switches and Hubs","lastUpdateTime":1788108506417,"macAddress":"52:54:00:02:19:54","deviceSupportLevel":"Supported","softwareType":"IOS-XE","softwareVersion":"17.12.1prd9","serialNumber":"CML12345UAD","collectionInterval":"Global
+        Default","dnsResolvedManagementAddress":"10.10.20.175","lastManagedResyncReasons":"Periodic","managementState":"Managed","pendingSyncRequestsCount":"0","reasonsForDeviceResync":"Periodic","reasonsForPendingSyncRequests":"","inventoryStatusDetail":"<status><general
+        code=\"SUCCESS\"/></status>","syncRequestedByApp":"","upTime":"220 days, 1:15:24.00","roleSource":"AUTO","locationName":null,"managementIpAddress":"10.10.20.175","platformId":"C9KV-UADP-8P","reachabilityFailureReason":"","reachabilityStatus":"Reachable","series":"Cisco
+        Catalyst 9000 Series Virtual Switches","snmpContact":"","snmpLocation":"","bootDateTime":"2026-01-22
+        15:33:26","interfaceCount":"0","apEthernetMacAddress":null,"lastUpdated":"2026-08-30
+        16:48:26","apManagerInterfaceIp":"","collectionStatus":"Managed","hostname":"sw1","associatedWlcIp":"","errorCode":null,"errorDescription":null,"lastDeviceResyncStartTime":"2026-08-30
+        16:47:55","lineCardCount":"0","lineCardId":"","managedAtleastOnce":true,"tagCount":"0","tunnelUdpPort":null,"uptimeSeconds":19082583,"vendor":"Cisco","waasDeviceMode":null,"description":"Cisco
+        IOS Software [Dublin], Catalyst L3 Switch Software (CAT9K_IOSXE), Version
+        17.12.1prd9, RELEASE SOFTWARE (fc1) Technical Support: http://www.cisco.com/techsupport
+        Copyright (c) 1986-2023 by Cisco Systems, Inc. Compiled Tue 15-Aug-23 16:44
+        by mcpre","type":"Cisco Catalyst 9000 UADP 8 Port Virtual Switch","location":null,"role":"ACCESS","instanceUuid":"aa754801-8895-41e8-8ca5-27ee415c9c42","instanceTenantId":"67b935c59155f50013515d1c","id":"aa754801-8895-41e8-8ca5-27ee415c9c42"},{"memorySize":"NA","family":"Switches
+        and Hubs","lastUpdateTime":1788108513658,"macAddress":"52:54:00:07:29:d0","deviceSupportLevel":"Supported","softwareType":"IOS-XE","softwareVersion":"17.12.1prd9","serialNumber":"CML12345","collectionInterval":"Global
+        Default","dnsResolvedManagementAddress":"10.10.20.176","lastManagedResyncReasons":"Periodic","managementState":"Managed","pendingSyncRequestsCount":"0","reasonsForDeviceResync":"Periodic","reasonsForPendingSyncRequests":"","inventoryStatusDetail":"<status><general
+        code=\"SUCCESS\"/></status>","syncRequestedByApp":"","upTime":"220 days, 1:15:19.00","roleSource":"AUTO","locationName":null,"managementIpAddress":"10.10.20.176","platformId":"C9KV-UADP-8P","reachabilityFailureReason":"","reachabilityStatus":"Reachable","series":"Cisco
+        Catalyst 9000 Series Virtual Switches","snmpContact":"","snmpLocation":"","bootDateTime":"2026-01-22
+        15:33:33","interfaceCount":"0","apEthernetMacAddress":null,"lastUpdated":"2026-08-30
+        16:48:33","apManagerInterfaceIp":"","collectionStatus":"Managed","hostname":"sw2","associatedWlcIp":"","errorCode":null,"errorDescription":null,"lastDeviceResyncStartTime":"2026-08-30
+        16:48:01","lineCardCount":"0","lineCardId":"","managedAtleastOnce":true,"tagCount":"0","tunnelUdpPort":null,"uptimeSeconds":19082576,"vendor":"Cisco","waasDeviceMode":null,"description":"Cisco
+        IOS Software [Dublin], Catalyst L3 Switch Software (CAT9K_IOSXE), Version
+        17.12.1prd9, RELEASE SOFTWARE (fc1) Technical Support: http://www.cisco.com/techsupport
+        Copyright (c) 1986-2023 by Cisco Systems, Inc. Compiled Tue 15-Aug-23 16:44
+        by mcpre","type":"Cisco Catalyst 9000 UADP 8 Port Virtual Switch","location":null,"role":"ACCESS","instanceUuid":"5a105585-b595-4b87-a01d-fd057a54abd4","instanceTenantId":"67b935c59155f50013515d1c","id":"5a105585-b595-4b87-a01d-fd057a54abd4"},{"memorySize":"NA","family":"Switches
+        and Hubs","lastUpdateTime":1788108497903,"macAddress":"52:54:00:05:77:13","deviceSupportLevel":"Supported","softwareType":"IOS-XE","softwareVersion":"17.12.1prd9","serialNumber":"CML12345ABC","collectionInterval":"Global
+        Default","dnsResolvedManagementAddress":"10.10.20.177","lastManagedResyncReasons":"Periodic","managementState":"Managed","pendingSyncRequestsCount":"0","reasonsForDeviceResync":"Periodic","reasonsForPendingSyncRequests":"","inventoryStatusDetail":"<status><general
+        code=\"SUCCESS\"/></status>","syncRequestedByApp":"","upTime":"220 days, 1:15:20.00","roleSource":"AUTO","locationName":null,"managementIpAddress":"10.10.20.177","platformId":"C9KV-UADP-8P","reachabilityFailureReason":"","reachabilityStatus":"Reachable","series":"Cisco
+        Catalyst 9000 Series Virtual Switches","snmpContact":"","snmpLocation":"","bootDateTime":"2026-01-22
+        15:33:17","interfaceCount":"0","apEthernetMacAddress":null,"lastUpdated":"2026-08-30
+        16:48:17","apManagerInterfaceIp":"","collectionStatus":"Managed","hostname":"sw3","associatedWlcIp":"","errorCode":null,"errorDescription":null,"lastDeviceResyncStartTime":"2026-08-30
+        16:47:55","lineCardCount":"0","lineCardId":"","managedAtleastOnce":true,"tagCount":"0","tunnelUdpPort":null,"uptimeSeconds":19082592,"vendor":"Cisco","waasDeviceMode":null,"description":"Cisco
+        IOS Software [Dublin], Catalyst L3 Switch Software (CAT9K_IOSXE), Version
+        17.12.1prd9, RELEASE SOFTWARE (fc1) Technical Support: http://www.cisco.com/techsupport
+        Copyright (c) 1986-2023 by Cisco Systems, Inc. Compiled Tue 15-Aug-23 16:44
+        by mcpre","type":"Cisco Catalyst 9000 UADP 8 Port Virtual Switch","location":null,"role":"ACCESS","instanceUuid":"9314fd24-a900-4877-8ecb-0e885fdb6495","instanceTenantId":"67b935c59155f50013515d1c","id":"9314fd24-a900-4877-8ecb-0e885fdb6495"},{"memorySize":"NA","family":"Switches
+        and Hubs","lastUpdateTime":1788108503054,"macAddress":"52:54:00:0f:1c:07","deviceSupportLevel":"Supported","softwareType":"IOS-XE","softwareVersion":"17.12.1prd9","serialNumber":"CML54321","collectionInterval":"Global
+        Default","dnsResolvedManagementAddress":"10.10.20.178","lastManagedResyncReasons":"Periodic","managementState":"Managed","pendingSyncRequestsCount":"0","reasonsForDeviceResync":"Periodic","reasonsForPendingSyncRequests":"","inventoryStatusDetail":"<status><general
+        code=\"SUCCESS\"/></status>","syncRequestedByApp":"","upTime":"220 days, 1:15:14.00","roleSource":"AUTO","locationName":null,"managementIpAddress":"10.10.20.178","platformId":"C9KV-UADP-8P","reachabilityFailureReason":"","reachabilityStatus":"Reachable","series":"Cisco
+        Catalyst 9000 Series Virtual Switches","snmpContact":"","snmpLocation":"","bootDateTime":"2026-01-22
+        15:33:23","interfaceCount":"0","apEthernetMacAddress":null,"lastUpdated":"2026-08-30
+        16:48:23","apManagerInterfaceIp":"","collectionStatus":"Managed","hostname":"sw4","associatedWlcIp":"","errorCode":null,"errorDescription":null,"lastDeviceResyncStartTime":"2026-08-30
+        16:48:01","lineCardCount":"0","lineCardId":"","managedAtleastOnce":true,"tagCount":"0","tunnelUdpPort":null,"uptimeSeconds":19082587,"vendor":"Cisco","waasDeviceMode":null,"description":"Cisco
+        IOS Software [Dublin], Catalyst L3 Switch Software (CAT9K_IOSXE), Version
+        17.12.1prd9, RELEASE SOFTWARE (fc1) Technical Support: http://www.cisco.com/techsupport
+        Copyright (c) 1986-2023 by Cisco Systems, Inc. Compiled Tue 15-Aug-23 16:44
+        by mcpre","type":"Cisco Catalyst 9000 UADP 8 Port Virtual Switch","location":null,"role":"ACCESS","instanceUuid":"df32db5b-a567-473a-b756-3163e5b23c6a","instanceTenantId":"67b935c59155f50013515d1c","id":"df32db5b-a567-473a-b756-3163e5b23c6a"}],"version":"1.0"}'
+    headers:
+      Access-Control-Allow-Methods:
+      - HEAD,GET,PUT,POST,DELETE,PATCH
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - 'default-src ''self'' http: https: data: blob: ''unsafe-inline'' ''unsafe-eval'';
+        base-uri ''self''; frame-ancestors ''self''; block-all-mixed-content'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Date:
+      - Mon, 31 Aug 2026 12:16:29 GMT
+      Server:
+      - webserver
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - api-gateway,upstream
+      X-Content-Type-Options:
+      - nosniff
+      X-Correlation-Id:
+      - 6d2fc693-ff1b-4dcf-ae03-55022e5bbbbd
+      X-Frame-Options:
+      - Deny
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-type:
+      - application/json;charset=utf-8
+      User-Agent:
+      - python-cisco-dnacsdk/2.3.7.6
+      x-auth-token:
+      - REDACTED
+    method: GET
+    uri: https://sandboxdnac.cisco.com/dna/intent/api/v1/network-device/aa754801-8895-41e8-8ca5-27ee415c9c42/config
+  response:
+    body:
+      string: '{"response":"\nBuilding configuration...\n\nCurrent configuration :
+        12033 bytes\n!\n! Last configuration change at 15:36:31 UTC Thu Jan 22 2026\n!\nversion
+        17.12\nservice timestamps debug datetime msec\nservice timestamps log datetime
+        msec\nplatform punt-keepalive disable-kernel-core\n!\nhostname sw1\n!\n!\nvrf
+        definition Mgmt-vrf\n !\n address-family ipv4\n exit-address-family\n !\n
+        address-family ipv6\n exit-address-family\n!\nno logging console\nno aaa new-model\nswitch
+        1 provision c9kv-uadp-8p\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n login xxxxxx\nvtp
+        version 1\n!\n!\n!\n!\n!\n!\n!\n!\ncrypto pki xxxxxxx\n enrollment selfsigned\n
+        subject-name xxxxxxxx\n revocation-check none\n rsakeypair TP-self-signed-
+        xxxxxxxx\n hash sha256\n!\ncrypto pki xxxxxxx\n enrollment pkcs12\n revocation-check
+        crl\n hash sha256\n!\n!\ncrypto pki certificate chain xxxxxxx\n certificate
+        self-signed xxxxxxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\nquit\ncrypto
+        pki certificate chain xxxxxxx\n certificate ca xxxxxxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\n  xxxx  xxxxx  xxxx  xxxx  xxxx\nquit\n!\n!\nlicense
+        boot level network-advantage addon dna-advantage\nmemory free low-watermark
+        processor 74862\n!\ndiagnostic bootup level minimal\n!\nspanning-tree mode
+        rapid-pvst\nspanning-tree extend system-id\n!\n!\n!\nusername cisco privilege
+        15 secret xxxxxx \n!\nredundancy\n mode sso\n!\n!\n!\n!\n!\n!\nclass-map match-any
+        system-cpp-police-topology-control\n  description Topology control\nclass-map
+        match-any system-cpp-police-sw-forward\n  description Sw forwarding, L2 LVX
+        data, LOGGING\nclass-map match-any system-cpp-default\n  description EWLC
+        control, EWLC data, Inter FED \nclass-map match-any system-cpp-police-sys-data\n  description
+        Learning cache ovfl, High Rate App, Exception, EGR Exception, NFL SAMPLED
+        DATA, RPF Failed\nclass-map match-any system-cpp-police-punt-webauth\n  description
+        Punt Webauth\nclass-map match-any system-cpp-police-l2lvx-control\n  description
+        L2 LVX control packets\nclass-map match-any system-cpp-police-forus\n  description
+        Forus Address resolution and Forus traffic\nclass-map match-any system-cpp-police-multicast-end-station\n  description
+        MCAST END STATION\nclass-map match-any system-cpp-police-multicast\n  description
+        Transit Traffic and MCAST Data\nclass-map match-any system-cpp-police-l2-control\n  description
+        L2 control\nclass-map match-any system-cpp-police-dot1x-auth\n  description
+        DOT1X Auth\nclass-map match-any system-cpp-police-data\n  description ICMP
+        redirect, ICMP_GEN and BROADCAST\nclass-map match-any system-cpp-police-stackwise-virt-control\n  description
+        Stackwise Virtual\nclass-map match-any non-client-nrt-class\nclass-map match-any
+        system-cpp-police-routing-control\n  description Routing control and Low Latency\nclass-map
+        match-any system-cpp-police-protocol-snooping\n  description Protocol snooping\nclass-map
+        match-any system-cpp-police-dhcp-snooping\n  description DHCP snooping\nclass-map
+        match-any system-cpp-police-system-critical\n  description System Critical
+        and Gold Pkt\n!\npolicy-map system-cpp-policy\n!\n! \n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\ninterface
+        Loopback0\n description management\n ip address 10.1.1.1 255.255.255.255\n!\ninterface
+        GigabitEthernet0/0\n vrf forwarding Mgmt-vrf\n ip address 10.10.20.175 255.255.255.0\n
+        negotiation auto\n!\ninterface GigabitEthernet1/0/1\n!\ninterface GigabitEthernet1/0/2\n!\ninterface
+        GigabitEthernet1/0/3\n switchport trunk allowed vlan 101\n switchport mode
+        trunk\n!\ninterface GigabitEthernet1/0/4\n!\ninterface GigabitEthernet1/0/5\n!\ninterface
+        GigabitEthernet1/0/6\n!\ninterface GigabitEthernet1/0/7\n switchport access
+        vlan 101\n switchport mode access\n!\ninterface GigabitEthernet1/0/8\n!\ninterface
+        Vlan1\n no ip address\n shutdown\n!\ninterface Vlan101\n description Prod\n
+        ip address 172.16.101.254 255.255.255.0\n!\nip default-gateway 10.10.20.254\nip
+        forward-protocol nd\nip tcp mss 1280\nip tcp window-size 212000\nno ip http
+        server\nno ip http secure-server\nip http client source-interface GigabitEthernet0/0\nip
+        ssh bulk-mode 131072\nip ssh source-interface GigabitEthernet0/0\n!\n!\n!\nlogging
+        source-interface GigabitEthernet0/0 vrf Mgmt-vrf\n!\nsnmp-server community
+        xxxxxxxx RO\nsnmp-server trap-source GigabitEthernet0/0\nsnmp-server enable
+        traps snmp authentication linkdown linkup coldstart warmstart\nsnmp-server
+        enable traps flowmon\nsnmp-server enable traps entity-perf throughput-notif\nsnmp-server
+        enable traps call-home message-send-fail server-fail\nsnmp-server enable traps
+        tty\nsnmp-server enable traps eigrp\nsnmp-server enable traps ospf state-change\nsnmp-server
+        enable traps ospf errors\nsnmp-server enable traps ospf retransmit\nsnmp-server
+        enable traps ospf lsa\nsnmp-server enable traps ospf cisco-specific state-change
+        nssa-trans-change\nsnmp-server enable traps ospf cisco-specific state-change
+        shamlink interface\nsnmp-server enable traps ospf cisco-specific state-change
+        shamlink neighbor\nsnmp-server enable traps ospf cisco-specific errors\nsnmp-server
+        enable traps ospf cisco-specific retransmit\nsnmp-server enable traps ospf
+        cisco-specific lsa\nsnmp-server enable traps bfd\nsnmp-server enable traps
+        smart-license\nsnmp-server enable traps auth-framework sec-violation\nsnmp-server
+        enable traps rep\nsnmp-server enable traps aaa_server\nsnmp-server enable
+        traps memory bufferpeak\nsnmp-server enable traps config-copy\nsnmp-server
+        enable traps config\nsnmp-server enable traps config-ctid\nsnmp-server enable
+        traps energywise\nsnmp-server enable traps fru-ctrl\nsnmp-server enable traps
+        entity\nsnmp-server enable traps flash insertion removal lowspace\nsnmp-server
+        enable traps power-ethernet police\nsnmp-server enable traps cpu threshold\nsnmp-server
+        enable traps syslog\nsnmp-server enable traps udld link-fail-rpt\nsnmp-server
+        enable traps udld status-change\nsnmp-server enable traps vtp\nsnmp-server
+        enable traps vlancreate\nsnmp-server enable traps vlandelete\nsnmp-server
+        enable traps port-security\nsnmp-server enable traps envmon\nsnmp-server enable
+        traps stackwise\nsnmp-server enable traps mvpn\nsnmp-server enable traps pw
+        vc\nsnmp-server enable traps ipsla\nsnmp-server enable traps dhcp\nsnmp-server
+        enable traps event-manager\nsnmp-server enable traps ike policy add\nsnmp-server
+        enable traps ike policy delete\nsnmp-server enable traps ike tunnel start\nsnmp-server
+        enable traps ike tunnel stop\nsnmp-server enable traps ipsec cryptomap add\nsnmp-server
+        enable traps ipsec cryptomap delete\nsnmp-server enable traps ipsec cryptomap
+        attach\nsnmp-server enable traps ipsec cryptomap detach\nsnmp-server enable
+        traps ipsec tunnel start\nsnmp-server enable traps ipsec tunnel stop\nsnmp-server
+        enable traps ipsec too-many-sas\nsnmp-server enable traps ospfv3 state-change\nsnmp-server
+        enable traps ospfv3 errors\nsnmp-server enable traps ipmulticast\nsnmp-server
+        enable traps msdp\nsnmp-server enable traps pim neighbor-change rp-mapping-change
+        invalid-pim-message\nsnmp-server enable traps bridge newroot topologychange\nsnmp-server
+        enable traps stpx inconsistency root-inconsistency loop-inconsistency\nsnmp-server
+        enable traps bgp cbgp2\nsnmp-server enable traps hsrp\nsnmp-server enable
+        traps isis\nsnmp-server enable traps cef resource-failure peer-state-change
+        peer-fib-state-change inconsistency\nsnmp-server enable traps lisp\nsnmp-server
+        enable traps nhrp nhs\nsnmp-server enable traps nhrp nhc\nsnmp-server enable
+        traps nhrp nhp\nsnmp-server enable traps nhrp quota-exceeded\nsnmp-server
+        enable traps local-auth\nsnmp-server enable traps entity-diag boot-up-fail
+        hm-test-recover hm-thresh-reached scheduled-test-fail\nsnmp-server enable
+        traps mpls rfc ldp\nsnmp-server enable traps mpls ldp\nsnmp-server enable
+        traps mpls rfc traffic-eng\nsnmp-server enable traps mpls traffic-eng\nsnmp-server
+        enable traps mpls fast-reroute protected\nsnmp-server enable traps bulkstat
+        collection transfer\nsnmp-server enable traps mac-notification change move
+        threshold\nsnmp-server enable traps errdisable\nsnmp-server enable traps vlan-membership\nsnmp-server
+        enable traps transceiver all\nsnmp-server enable traps vrfmib vrf-up vrf-down
+        vnet-trunk-up vnet-trunk-down\nsnmp-server enable traps rf\nsnmp-server enable
+        traps mpls vpn\nsnmp-server enable traps mpls rfc vpn\nsnmp-server host 10.10.20.85
+        version 2c xxxxxxxx \n!\n!\ncontrol-plane\n service-policy input system-cpp-policy\n!\n!\n!\nline
+        con 0\n exec-timeout 0 0\n stopbits 1\nline vty 0 4\n exec-timeout 0 0\n login
+        xxxxxx\n transport input ssh\nline vty 5 15\n login xxxxxx\n transport input
+        ssh\n!\n!\n!\n!\n!\n!\n!\nend\n\n","version":"1.0"}'
+    headers:
+      Access-Control-Allow-Methods:
+      - HEAD,GET,PUT,POST,DELETE,PATCH
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - 'default-src ''self'' http: https: data: blob: ''unsafe-inline'' ''unsafe-eval'';
+        base-uri ''self''; frame-ancestors ''self''; block-all-mixed-content'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Date:
+      - Mon, 31 Aug 2026 12:16:30 GMT
+      Server:
+      - webserver
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - api-gateway,upstream
+      X-Content-Type-Options:
+      - nosniff
+      X-Correlation-Id:
+      - edb03113-cad5-4198-b415-2140ce87abb9
+      X-Frame-Options:
+      - Deny
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+version: 1
