@@ -67,12 +67,30 @@ class MerakiConfig(BaseModel):
     base_url: str = "https://api.meraki.com/api/v1"
 
 
+class WlcConfig(BaseModel):
+    # Catalyst 9800 wireless LAN controller, queried over RESTCONF
+    # (Cisco-IOS-XE-wireless-* YANG models).
+    #
+    # The DevNet Catalyst 9800 sandbox is *reserved* (book a slot + AnyConnect
+    # VPN), not always-on, so this source is opt-in: leave ``enabled`` false and
+    # the wireless scenarios keep using Catalyst Center / synthetic RF. Set
+    # NETSIM_WLC_ENABLED=true plus the WLC_* vars once you have a reservation,
+    # then run the wireless scenarios with --mode record to capture a cassette.
+    enabled: bool = False
+    base_url: str = "https://10.10.20.51"
+    username: str = "developer"
+    password: str = "C1sco12345"
+    verify: bool = False
+    timeout: int = 30
+
+
 class Settings(BaseModel):
     mode: Mode = "replay"
     topology: str = "topologies/campus-small.yaml"
     dnac: DnacConfig = Field(default_factory=DnacConfig)
     ise: IseConfig = Field(default_factory=IseConfig)
     meraki: MerakiConfig = Field(default_factory=MerakiConfig)
+    wlc: WlcConfig = Field(default_factory=WlcConfig)
 
     def topology_path(self) -> Path:
         p = Path(self.topology)
@@ -93,6 +111,7 @@ def get_settings() -> Settings:
     y_dnac = y.get("dnac", {})
     y_ise = y.get("ise", {})
     y_meraki = y.get("meraki", {})
+    y_wlc = y.get("wlc", {})
 
     dnac = DnacConfig(
         base_url=_env("NETSIM_DNAC_BASE_URL", y_dnac.get("base_url")) or DnacConfig().base_url,
@@ -115,6 +134,17 @@ def get_settings() -> Settings:
         api_key=_env("NETSIM_MERAKI_API_KEY", y_meraki.get("api_key")),
         base_url=_env("NETSIM_MERAKI_BASE_URL", y_meraki.get("base_url")) or MerakiConfig().base_url,
     )
+    wlc = WlcConfig(
+        enabled=_env_bool("NETSIM_WLC_ENABLED", y_wlc.get("enabled", WlcConfig().enabled)),
+        base_url=_env("NETSIM_WLC_BASE_URL", y_wlc.get("base_url")) or WlcConfig().base_url,
+        username=_env("NETSIM_WLC_USERNAME", y_wlc.get("username")) or WlcConfig().username,
+        password=_env("NETSIM_WLC_PASSWORD", y_wlc.get("password")) or WlcConfig().password,
+        verify=_env_bool("NETSIM_WLC_VERIFY", y_wlc.get("verify", WlcConfig().verify)),
+        timeout=int(_env("NETSIM_WLC_TIMEOUT", str(y_wlc.get("timeout", WlcConfig().timeout)))
+                    or WlcConfig().timeout),
+    )
     mode = _env("NETSIM_MODE", y.get("mode")) or "replay"
     topology = _env("NETSIM_TOPOLOGY", y.get("topology")) or Settings().topology
-    return Settings(mode=mode, topology=topology, dnac=dnac, ise=ise, meraki=meraki)
+    return Settings(
+        mode=mode, topology=topology, dnac=dnac, ise=ise, meraki=meraki, wlc=wlc
+    )

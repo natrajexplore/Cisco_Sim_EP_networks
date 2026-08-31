@@ -15,8 +15,10 @@ from typing import Iterator
 
 from netsimlab import nac_eval
 from netsimlab.apiutil import dnac_response, ise_resources, names
+from netsimlab.connectors.base import ConnectorError
 from netsimlab.connectors.catalyst_center import CatalystCenterConnector
 from netsimlab.connectors.ise import IseConnector
+from netsimlab.connectors.wlc import WlcConnector
 from netsimlab.scenarios.base import Scenario, ScenarioContext, StepResult
 
 
@@ -73,6 +75,39 @@ class GuestWireless(Scenario):
                 verdict="warn",
                 summary=f"wireless design not available on sandbox: {exc}",
             )
+
+        # Optional: confirm the guest WLAN really exists (and is enabled) on a
+        # Catalyst 9800 WLC. Opt-in via settings.wlc.enabled.
+        if ctx.settings.wlc.enabled:
+            want = next((s.name for s in topo.ssids if s.auth_method == "guest"), None)
+            wlc = WlcConnector(mode=ctx.mode, scenario=self.name)
+            try:
+                with wlc.session() as w:
+                    wlans = w.wlans()
+                by_ssid = {str(x.get("apf-vap-id-data", {}).get("ssid") or x.get("ssid")): x
+                           for x in wlans}
+                entry = by_ssid.get(want)
+                enabled = bool(entry and (
+                    entry.get("wlan-enable")
+                    if "wlan-enable" in (entry or {})
+                    else entry.get("apf-vap-id-data", {}).get("wlan-status")
+                ))
+                yield StepResult(
+                    name=f"Verify guest WLAN '{want}' on Catalyst 9800",
+                    verdict="pass" if entry and enabled else ("warn" if entry else "fail"),
+                    request="GET /restconf/data/Cisco-IOS-XE-wireless-wlan-cfg:wlan-cfg-data/wlan-cfg-entries",
+                    summary=(
+                        f"{len(wlans)} WLAN(s) on controller; "
+                        + (f"'{want}' present, enabled={enabled}" if entry else f"'{want}' NOT configured")
+                    ),
+                    data={"wlans": sorted(by_ssid)},
+                )
+            except ConnectorError as exc:
+                yield StepResult(
+                    name=f"Verify guest WLAN on Catalyst 9800",
+                    verdict="warn",
+                    summary=f"WLC WLAN check skipped ({exc})",
+                )
 
         guest_ssid = next((s for s in topo.ssids if s.auth_method == "guest"), None)
         if guest_ssid is None:

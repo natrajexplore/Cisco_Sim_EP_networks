@@ -21,10 +21,30 @@ CLI ~120 MB RAM   ·   dashboard ~200 MB   ·   no Docker   ·   no GPU
 | `guest_wireless_onboarding` | Self-registered guest portal → CoA → internet-only access | ISE + Catalyst Center |
 | `endpoint_profiling_posture` | Device profiling (device sensor) + posture compliance / quarantine | ISE |
 | `catalyst_provisioning_assurance` | Site hierarchy, inventory, SWIM, network/client health, issues | Catalyst Center |
-| `wireless_rf_exploration` | AP RF telemetry vs thresholds: interference, noise, air quality, coverage holes | Catalyst Center |
+| `wireless_rf_exploration` | AP RF telemetry vs thresholds: interference, noise, air quality, coverage holes | Catalyst Center *(or Catalyst 9800 WLC)* |
 
 Each run is compared to a **golden "expected output" snapshot** captured from the
 real sandbox, so you see exactly where live behaviour drifts from the baseline.
+
+### Optional: Catalyst 9800 WLC source
+
+The wireless scenarios can pull real per-radio RF and WLAN state straight off a
+**Catalyst 9800** over RESTCONF. It is off by default (no always-on 9800 sandbox
+exists). Reserve the *Catalyst 9800 Wireless* DevNet sandbox, connect the VPN,
+then:
+
+```bash
+export NETSIM_WLC_ENABLED=true
+export NETSIM_WLC_BASE_URL=https://<wlc-mgmt-ip>
+export NETSIM_WLC_USERNAME=... NETSIM_WLC_PASSWORD=...
+netsim sandbox                                     # WLC row appears
+netsim scenario run wireless_rf_exploration --mode record   # captures fixtures/wlc/
+```
+
+With it enabled, `wireless_rf_exploration` uses the 9800's `rrm-oper` /
+`radio-oper` data (channel utilisation, noise, interference, air quality) instead
+of the synthetic model, and `guest_wireless_onboarding` gains a guest-WLAN
+existence/enable check. Disabled, both scenarios are unchanged.
 
 ## Install
 
@@ -72,7 +92,8 @@ checks structural integrity; scenarios compare the sandbox against this intent.
 ```
 netsimlab/
   topology/      models + loader + graph validation + mermaid/json export
-  connectors/    dnacentersdk / ciscoisesdk wrappers with record/replay (vcrpy)
+  connectors/    dnacentersdk / ciscoisesdk / Catalyst 9800 RESTCONF wrappers
+                 with record/replay (vcrpy)
   scenarios/     the 5 scenarios + registry
   nac_eval.py    local policy evaluator (no RADIUS server needed)
   expect/        deepdiff comparison to golden snapshots

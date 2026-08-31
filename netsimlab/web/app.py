@@ -84,6 +84,8 @@ def api_settings() -> dict[str, Any]:
         "topology": s.topology,
         "dnac_base_url": s.dnac.base_url,
         "ise_base_url": s.ise.base_url,
+        "wlc_enabled": s.wlc.enabled,
+        "wlc_base_url": s.wlc.base_url if s.wlc.enabled else None,
     }
 
 

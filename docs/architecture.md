@@ -14,19 +14,19 @@
         │  nac_eval: local policy evaluation       │
         └───────┬───────────────────────┬──────────┘
                 │                       │
-       ┌────────▼────────┐     ┌────────▼─────────┐
-       │ CatalystCenter  │     │  ISE connector   │
-       │ connector       │     │  (ciscoisesdk)   │
-       │ (dnacentersdk)  │     │                  │
-       └────────┬────────┘     └────────┬─────────┘
-                │      vcrpy cassette    │
-        live ───┤      (record/replay)   ├─── live
-                ▼                        ▼
-     sandboxdnac.cisco.com     devnetsandboxise.cisco.com
-        (DevNet always-on)        (DevNet always-on)
-                │                        │
-                └──────────┬─────────────┘
-                           ▼
+   ┌──────────▼──────┐  ┌───────▼──────────┐  ┌──────▼───────────┐
+   │ CatalystCenter  │  │  ISE connector   │  │  WLC connector   │
+   │ connector       │  │  (ciscoisesdk)   │  │  (RESTCONF /     │
+   │ (dnacentersdk)  │  │                  │  │   requests)      │
+   └──────────┬──────┘  └───────┬──────────┘  └──────┬───────────┘
+              │      vcrpy cassette (record/replay)  │
+        live ─┤                                      ├─ live (opt-in)
+              ▼                 ▼                     ▼
+   sandboxdnac.cisco.com  devnetsandboxise.cisco.com   Catalyst 9800
+      (DevNet always-on)     (DevNet always-on)      (DevNet *reserved*)
+              │                 │                     │
+              └────────┬────────┴─────────────────────┘
+                       ▼
                  ScenarioResult  ──►  expect/compare (deepdiff)  ──►  expected/*.json
                            │
                  runs/<id>/{result,comparison}.json + report.html
@@ -43,6 +43,17 @@
 * **`custom_caller`, not the typed SDK methods.** Both SDKs expose
   `api.custom_caller.call_api("GET", path, ...)`. Using it keeps cassettes stable
   across SDK/controller versions and keeps the connector surface tiny.
+
+* **The WLC connector is opt-in.** A Catalyst 9800 is not part of the always-on
+  DevNet estate, so `netsimlab/connectors/wlc.py` (plain `requests` over
+  RESTCONF, `Cisco-IOS-XE-wireless-*` YANG) only activates when
+  `settings.wlc.enabled` is set. When on, it is the preferred RF source for the
+  `wireless_rf_exploration` scenario (per-radio channel utilisation, noise,
+  interference, air-quality from `rrm-oper` / `radio-oper`) and adds a
+  guest-WLAN existence/enable check to `guest_wireless_onboarding`; when off,
+  those scenarios are byte-for-byte unchanged and keep using Catalyst Center
+  Assurance / the synthetic RF model. Record a `fixtures/wlc/` cassette during a
+  sandbox reservation, replay it forever after.
 
 * **vcrpy at the `requests` layer.** One `use_cassette()` context around the SDK
   calls records/replays every HTTP exchange. A custom matcher ignores volatile

@@ -197,6 +197,16 @@ def sandbox_check() -> None:
             (s.ise.ers_username, s.ise.ers_password),
         ),
     ]
+    if s.wlc.enabled:
+        targets.append(
+            (
+                "Catalyst 9800 WLC",
+                s.wlc.base_url.rstrip("/")
+                + "/restconf/data/Cisco-IOS-XE-wireless-general-cfg:general-cfg-data",
+                s.wlc.verify,
+                (s.wlc.username, s.wlc.password),
+            )
+        )
     t = Table(title="DevNet sandbox reachability")
     t.add_column("system"); t.add_column("endpoint"); t.add_column("status")
     for label, url, verify, auth in targets:

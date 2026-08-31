@@ -7,6 +7,12 @@
 | Catalyst Center (DNA Center) | `https://sandboxdnac.cisco.com` | `devnetuser` / `Cisco123!` | internal-CA cert → `verify=False`; ~4 devices, real Assurance data |
 | Identity Services Engine | `https://devnetsandboxise.cisco.com` | `readonly` / `ISEisC00L` | ERS read-only (GET); confirm current creds on the sandbox page |
 
+## Reserved sandboxes (book a slot + AnyConnect VPN)
+
+| System | Access | Credentials | Notes |
+|---|---|---|---|
+| Catalyst 9800 Wireless (eWLC) | RESTCONF `https://<mgmt-ip>` | from the reservation page (often `developer` / `C1sco12345`) | opt-in `NETSIM_WLC_*`; `Cisco-IOS-XE-wireless-*` YANG; record a `fixtures/wlc/` cassette while connected |
+
 Sandbox catalog: <https://developer.cisco.com/site/sandbox/>
 · Catalyst Center: <https://developer.cisco.com/docs/catalyst-center/sandboxes/>
 · ISE: <https://developer.cisco.com/docs/identity-services-engine/latest/sandbox/>
@@ -30,6 +36,9 @@ Sandbox catalog: <https://developer.cisco.com/site/sandbox/>
 * ISE ERS API — <https://developer.cisco.com/docs/identity-services-engine/>
   (`/ers/config/{networkdevice,authorizationprofile,downloadableacl,sgt,
   identitygroup,endpoint,endpointgroup,portal,guesttype,sponsorportal}`)
+* Catalyst 9800 RESTCONF / IOS XE wireless YANG —
+  <https://developer.cisco.com/docs/wireless-troubleshooting-tools/restconf/>
+  (`Cisco-IOS-XE-wireless-{wlan-cfg,access-point-oper,rrm-oper,client-oper}`)
 * `1homas/ise-postman-collections` — ERS/MNT/pxGrid request shapes
 * `CiscoDevNet` org — ISE ERS and Catalyst Center sample code
 

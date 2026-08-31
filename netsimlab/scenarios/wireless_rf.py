@@ -15,7 +15,9 @@ import hashlib
 from typing import Any, Iterator
 
 from netsimlab.apiutil import dnac_response
+from netsimlab.connectors.base import ConnectorError
 from netsimlab.connectors.catalyst_center import CatalystCenterConnector
+from netsimlab.connectors.wlc import WlcConnector
 from netsimlab.scenarios.base import Scenario, ScenarioContext, StepResult
 from netsimlab.topology.models import RfProfile
 
@@ -113,6 +115,29 @@ class WirelessRf(Scenario):
                     summary=f"sandbox has no live RF feed ({exc}); using deterministic synthetic RF",
                 )
 
+        # Optional: pull real per-radio RF straight off a Catalyst 9800 WLC over
+        # RESTCONF. Opt-in via settings.wlc.enabled; when set it is the preferred
+        # RF source and overrides the synthetic model per AP.
+        wlc_rf: dict[str, Any] = {}
+        if ctx.settings.wlc.enabled:
+            wlc = WlcConnector(mode=ctx.mode, scenario=self.name)
+            try:
+                with wlc.session() as w:
+                    wlc_rf = w.rf_by_ap()
+                yield StepResult(
+                    name="Read AP RF from Catalyst 9800 WLC (RESTCONF)",
+                    verdict="pass" if wlc_rf else "warn",
+                    request="GET /restconf/data/Cisco-IOS-XE-wireless-rrm-oper:rrm-oper-data/rrm-measurement",
+                    summary=f"RF metrics for {len(wlc_rf)} AP(s) from the 9800",
+                    data={"aps": sorted(wlc_rf)},
+                )
+            except ConnectorError as exc:
+                yield StepResult(
+                    name="Read AP RF from Catalyst 9800 WLC (RESTCONF)",
+                    verdict="warn",
+                    summary=f"WLC RF unavailable ({exc}); falling back to synthetic RF",
+                )
+
         yield StepResult(
             name="RF baseline (topology rf_profile)",
             verdict="info",
@@ -125,16 +150,22 @@ class WirelessRf(Scenario):
 
         total_findings = 0
         for ap in aps:
-            rf = _synth_rf(ap.name)
+            from_wlc = ap.name in wlc_rf
+            rf = wlc_rf[ap.name] if from_wlc else _synth_rf(ap.name)
+            src = " [Catalyst 9800 RRM]" if from_wlc else ""
             findings = _assess(rf, prof)
             total_findings += len(findings)
             if not findings:
                 verdict = "pass"
-                summary = "RF within thresholds on both bands"
+                summary = f"RF within thresholds on both bands{src}"
             else:
                 verdict = "warn"
                 crit = sum(1 for sev, _, _ in findings if sev == "crit")
-                summary = f"{len(findings)} RF finding(s)" + (f", {crit} critical" if crit else "")
+                summary = (
+                    f"{len(findings)} RF finding(s)"
+                    + (f", {crit} critical" if crit else "")
+                    + src
+                )
             yield StepResult(
                 name=f"RF assessment: {ap.name} ({ap.site.floor if ap.site else '-'})",
                 verdict=verdict,
