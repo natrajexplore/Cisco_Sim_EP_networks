@@ -33,7 +33,7 @@ CLI ~120 MB RAM   ·   dashboard ~200 MB   ·   no Docker   ·   no GPU
 Each run is compared to a **golden "expected output" snapshot** captured from the
 real sandbox, so you see exactly where live behaviour drifts from the baseline.
 
-### Optional: Catalyst 9800 WLC source
+## Optional: Catalyst 9800 WLC source
 
 The wireless scenarios can pull real per-radio RF and WLAN state straight off a
 **Catalyst 9800** over RESTCONF. It is off by default (no always-on 9800 sandbox
