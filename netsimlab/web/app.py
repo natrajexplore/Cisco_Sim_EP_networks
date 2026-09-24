@@ -1,4 +1,5 @@
-"""FastAPI dashboard: topology graph, scenario runner (SSE), run history."""
+"""FastAPI dashboard: topology graph (2D/3D), device access inventory, quality
+KPIs, scenario runner (SSE), run history."""
 
 from __future__ import annotations
 
@@ -20,6 +21,7 @@ from netsimlab.scenarios.base import ScenarioResult
 from netsimlab.scenarios.registry import list_scenarios
 from netsimlab.topology.diagram import to_graph_json, to_mermaid
 from netsimlab.topology.graph import validate
+from netsimlab.topology.inventory import device_inventory, quality_summary
 from netsimlab.topology.loader import load_topology
 
 _STATIC = Path(__file__).parent / "static"
@@ -43,6 +45,25 @@ def api_topology(file: str | None = None) -> dict[str, Any]:
         "validation": {"ok": rep.ok, "errors": rep.errors, "warnings": rep.warnings},
         "path": path,
     }
+
+
+@app.get("/api/devices")
+def api_devices(file: str | None = None) -> list[dict[str, Any]]:
+    return device_inventory(load_topology(file or get_settings().topology))
+
+
+@app.get("/api/devices/{name}")
+def api_device(name: str, file: str | None = None) -> dict[str, Any]:
+    for d in api_devices(file):
+        if d["name"] == name:
+            return d
+    raise HTTPException(404, f"device {name} not found")
+
+
+@app.get("/api/quality")
+def api_quality(file: str | None = None) -> dict[str, Any]:
+    topo = load_topology(file or get_settings().topology)
+    return quality_summary(topo, latest_runs(200))
 
 
 @app.get("/api/scenarios")

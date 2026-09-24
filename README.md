@@ -1,7 +1,7 @@
 # netsim lab
 
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue?logo=python&logoColor=white)
-![tests](https://img.shields.io/badge/tests-33%20passing-brightgreen)
+![tests](https://img.shields.io/badge/tests-38%20passing-brightgreen)
 ![scenarios](https://img.shields.io/badge/scenarios-6-2a9d8f)
 ![mode](https://img.shields.io/badge/offline-replay%20%7C%20record%20%7C%20live-informational)
 ![Cisco DevNet](https://img.shields.io/badge/Cisco%20DevNet-always--on%20sandboxes-1BA0D7?logo=cisco&logoColor=white)
@@ -100,11 +100,35 @@ The dashboard topology graph is interactive — hover (or click) a device, link 
 endpoint to see its connected port IDs, the neighbor on the other end and that
 neighbor's port, plus link kind / VLAN / auth method.
 
+## Dashboard
+
+`netsim serve` opens a single-page dashboard with:
+
+- **Quality overview.** Network health score (0–100, averaged per device from
+  switchport findings), device / endpoint counts, compliant-port ratio,
+  findings by severity, and the scenario pass rate and snapshot drift from the
+  latest run of each scenario.
+- **Topology in 2D or 3D.** The 3D view stacks devices on tiers (controllers →
+  core → distribution/WLC → access → wireless edge → endpoints), with animated
+  CAPWAP / auth / mgmt flows and halos on devices that have open findings.
+  Color by role or by health, find a device, auto-rotate, hide endpoints. Click
+  any device to fly the camera to it.
+- **Device access.** A sortable, filterable inventory. Each device opens a
+  drawer with its SSH command, copy-ready troubleshooting `show` commands,
+  every switchport (auth mode, host-mode, methods, VLANs, CoA / reauth / dACL,
+  PoE / QoS, verdict and findings), attached endpoints, and neighbors with
+  local/remote ports.
+
+JSON APIs behind it: `/api/quality`, `/api/devices`, `/api/devices/{name}`,
+`/api/topology`. The 2D/3D graph libraries load from public CDNs
+(cdnjs / jsDelivr), so the browser needs internet access for the topology view.
+
 ## Layout
 
 ```
 netsimlab/
   topology/      models + loader + graph validation + mermaid/json export
+                 + device inventory / health scoring (inventory.py)
   connectors/    dnacentersdk / ciscoisesdk / Catalyst 9800 RESTCONF wrappers
                  with record/replay (vcrpy)
   scenarios/     the 6 scenarios + registry
@@ -113,7 +137,8 @@ netsimlab/
   expect/        deepdiff comparison to golden snapshots
   runner.py      execute + persist + compare
   report/        HTML report
-  web/           FastAPI dashboard + SPA (topology graph, SSE runner, history)
+  web/           FastAPI dashboard + SPA (quality KPIs, 2D/3D topology,
+                 device access drawer, SSE runner, history)
 fixtures/        vcrpy cassettes (committed, secrets scrubbed)
 expected/        golden snapshots (committed)
 ```

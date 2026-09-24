@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>netsim lab</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.9/dist/vis-network.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/3d-force-graph@1.73.4/dist/3d-force-graph.min.js"></script>
 <link rel="stylesheet" href="/static/app.css">
 </head>
 <body>
@@ -13,17 +14,68 @@
   <div id="env" class="env"></div>
 </header>
 
+<!-- quality overview -->
+<section id="quality" class="kpis" aria-label="Quality overview">
+  <div class="kpi kpi-health">
+    <div class="ring" id="health-ring"><span id="health-val">–</span></div>
+    <div><div class="kpi-label">Network health</div><div id="health-grade" class="kpi-sub"></div></div>
+  </div>
+  <div class="kpi"><div class="kpi-val" id="k-devices">–</div><div class="kpi-label">Devices</div><div class="kpi-sub" id="k-roles"></div></div>
+  <div class="kpi"><div class="kpi-val" id="k-endpoints">–</div><div class="kpi-label">Endpoints</div><div class="kpi-sub" id="k-ssids"></div></div>
+  <div class="kpi"><div class="kpi-val" id="k-ports">–</div><div class="kpi-label">Compliant ports</div><div class="bar"><i id="k-ports-bar"></i></div></div>
+  <div class="kpi"><div class="kpi-val"><span class="sev crit" id="k-crit">–</span><span class="sev warn" id="k-warn">–</span><span class="sev info" id="k-info">–</span></div><div class="kpi-label">Findings (crit · warn · info)</div></div>
+  <div class="kpi"><div class="kpi-val" id="k-pass">–</div><div class="kpi-label">Scenario pass rate</div><div class="kpi-sub" id="k-drift"></div></div>
+</section>
+
 <main>
   <section class="panel graph-panel">
     <div class="panel-head">
-      <h2>Topology</h2>
-      <span id="topo-name" class="pill"></span>
+      <h2>Topology <span id="topo-name" class="pill"></span></h2>
+      <div class="tools">
+        <input id="node-search" type="search" placeholder="find device…" list="node-list" aria-label="Find device">
+        <datalist id="node-list"></datalist>
+        <select id="color-by" aria-label="Color nodes by">
+          <option value="role">color: role</option>
+          <option value="health">color: health</option>
+        </select>
+        <div class="seg" role="tablist">
+          <button data-view="2d" class="on" role="tab">2D</button>
+          <button data-view="3d" role="tab">3D</button>
+        </div>
+      </div>
     </div>
-    <div id="graph"></div>
+    <div class="graph-wrap">
+      <div id="graph"></div>
+      <div id="graph3d" hidden></div>
+      <div id="controls3d" class="controls3d" hidden>
+        <button id="g3-reset" title="Reset camera">⟲ reset</button>
+        <button id="g3-rotate" title="Auto-rotate">↻ rotate</button>
+        <button id="g3-endpoints" class="on" title="Show endpoints and SSIDs">endpoints</button>
+        <button id="g3-flow" class="on" title="Animate traffic flows">flows</button>
+      </div>
+      <div id="legend" class="legend"></div>
+    </div>
     <div id="hoverinfo" class="hoverinfo">
-      <span class="hint">Hover a device, link or endpoint for port &amp; neighbor detail</span>
+      <span class="hint">Hover a device, link or endpoint for port &amp; neighbor detail · click a device to open it</span>
     </div>
     <div id="validation" class="validation"></div>
+  </section>
+
+  <section class="panel access-panel">
+    <div class="panel-head">
+      <h2>Device access</h2>
+      <div class="tools">
+        <input id="dev-filter" type="search" placeholder="filter name, IP, platform…" aria-label="Filter devices">
+        <select id="dev-role" aria-label="Role"><option value="">all roles</option></select>
+      </div>
+    </div>
+    <div class="table-scroll">
+      <table id="devices" class="devices"><thead><tr>
+        <th data-sort="name">device</th><th data-sort="role">role</th><th data-sort="mgmt_ip">mgmt IP</th>
+        <th data-sort="ports">ports</th><th data-sort="endpoints">hosts</th><th data-sort="health">health</th>
+      </tr></thead><tbody></tbody></table>
+    </div>
+    <div class="worst"><h3>Needs attention</h3><ol id="worst"></ol></div>
   </section>
 
   <section class="panel run-panel">
@@ -48,15 +100,35 @@
       <div id="comparison" class="comparison"></div>
     </div>
   </section>
+
+  <section class="panel history-panel">
+    <div class="panel-head"><h2>Recent runs</h2><button id="refresh-runs" class="ghost">refresh</button></div>
+    <div class="table-scroll">
+      <table id="runs"><thead><tr>
+        <th>run</th><th>scenario</th><th>mode</th><th>pass</th><th>fail</th><th>warn</th><th>snapshot</th>
+      </tr></thead><tbody></tbody></table>
+    </div>
+  </section>
 </main>
 
-<section class="panel history-panel">
-  <div class="panel-head"><h2>Recent runs</h2><button id="refresh-runs">refresh</button></div>
-  <table id="runs"><thead><tr>
-    <th>run</th><th>scenario</th><th>mode</th><th>pass</th><th>fail</th><th>warn</th><th>snapshot</th>
-  </tr></thead><tbody></tbody></table>
-</section>
+<!-- device detail drawer -->
+<aside id="drawer" class="drawer" hidden aria-label="Device detail">
+  <div class="drawer-head">
+    <div>
+      <div id="dr-name" class="dr-name"></div>
+      <div id="dr-sub" class="muted"></div>
+    </div>
+    <button id="dr-close" class="ghost" aria-label="Close">✕</button>
+  </div>
+  <div id="dr-body" class="drawer-body"></div>
+</aside>
+<div id="scrim" class="scrim" hidden></div>
 
-<script src="/static/app.js"></script>
+<!-- same three.js release 3d-force-graph bundles, so custom node meshes share its color pipeline -->
+<script type="module">
+  import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.168.0/build/three.module.min.js";
+  window.THREE = THREE;
+</script>
+<script type="module" src="/static/app.js"></script>
 </body>
 </html>
