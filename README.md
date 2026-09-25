@@ -6,7 +6,7 @@
 ![mode](https://img.shields.io/badge/offline-replay%20%7C%20record%20%7C%20live-informational)
 ![Cisco DevNet](https://img.shields.io/badge/Cisco%20DevNet-always--on%20sandboxes-1BA0D7?logo=cisco&logoColor=white)
 
-A **lightweight** framework for exploring enterprise network architecture and
+A **lightweight** framework for exploring enterprise 3D view network architecture and
 simulating real-world **Cisco ISE / NAC, wireless and Catalyst Center** scenarios
 — without Cisco Modeling Labs, without controller VMs, on a laptop with **8 GB RAM**.
 
