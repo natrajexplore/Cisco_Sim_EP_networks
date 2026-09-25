@@ -1,4 +1,4 @@
-# netsim lab
+# netsim visual lab
 
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue?logo=python&logoColor=white)
 ![tests](https://img.shields.io/badge/tests-33%20passing-brightgreen)
